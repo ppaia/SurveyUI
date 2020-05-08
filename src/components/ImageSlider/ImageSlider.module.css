@@ -1,0 +1,56 @@
+.pdpTitle{
+    font-weight: bold;
+}
+.pdpDetails{
+    font-size: 14px;
+}
+.pdpCurrentPrice{
+    color: red;
+    font-size: 15px;
+}
+.pdpBadges{
+
+    font-size: 15px;
+}
+.imagesSlider img{
+    width: auto;
+    height: 16rem !important;
+}
+.imagesSlider{
+    /* margin-right: -38px !important; */
+    flex-shrink: -1 !important;
+    width:20%!important;
+    /* margin-bottom: 20px; */
+    margin-right: 0!important;
+}
+.brandName{
+    display: block;
+    font-weight: bold;
+}
+.brandDetails{
+    font-size: 12px;
+    display: block;
+}
+.brandPrice{
+    color: #2c2c37;
+    display: block;
+    font-weight: 400;
+    font-size: .875rem;
+}
+.brandPriceNow{
+    display: block;
+    color: #2c2c37;
+    font-size: 13px;
+    font-weight: 600;
+    font-size: .875rem;
+}
+.shippingDetails{
+    font-size: 13px;
+}
+.SwiperData{
+    width: 95%!important;
+    margin: 0 3% 3% 3% !important;
+}
+.customized-swiper-container{
+    color:#000!important;
+}

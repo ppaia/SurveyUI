@@ -1,0 +1,59 @@
+.span{
+    float: right;
+    width:15%;
+    text-align: center;
+}
+.sizeList{
+    width: 90%;
+  }
+  .ButtonSize{
+    background: #fff;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    margin: .25rem;
+    padding: 0 .5rem;
+    border: .0625rem solid #d6d6d6!important;
+    line-height: 2.875rem;
+    height: 3rem;
+    min-width: 4.375rem;
+    letter-spacing: .2px;
+    color: #000;
+  }
+  .ButtonSize:hover, .ButtonSize:active,.ButtonSize:focus{
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+  }
+  .InactiveSize:before {
+    content: "";
+    height: .05rem;
+    background-color: #999;
+    position: absolute;
+    display: inline-block;
+    transform: rotate(33.8deg);
+    width: 5.2rem;
+    top: 1.4rem;
+    left: 50%;
+    margin-left: -2.6rem;
+  }
+  .InactiveSize {
+    background-color: #f8f8f8;
+    color: silver;
+    font-weight: 400;
+  }
+  .sizeChart{
+    text-decoration: underline;
+    color: #626369;
+  }
+  .sizeChart:hover{
+    text-decoration: none;
+    background-color: transparent;
+    color: #626369;
+  }
+  .spanSlash{
+    color: #e6e6e6;
+    margin: 0 .5rem;
+  }

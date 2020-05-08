@@ -1,0 +1,67 @@
+{
+    "product": [
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/14622396_fpx.tif",
+            "productId": 6687146,
+            "brand": "I.N.C. International Concepts",
+            "detail": "INC Moleskin Moto Jacket, Created for Macy's",
+            "originalPrice": "$ 220",
+            "currentPrice": "$ 100",
+            "shipping": "Free shipping at $50"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/8/optimized/9631798_fpx.tif",
+            "productId": 5832919,
+            "brand": "Bar III",
+            "detail": "Bar III Knit Moto Jacket , Created for Macy's",
+            "originalPrice": "$ 300",
+            "currentPrice": "$ 200",
+            "shipping": "Free shipping at $250"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/14629536_fpx.tif",
+            "productId": 6620939,
+            "brand": "I.N.C. International Concepts",
+            "detail": "INC Menswear Blazer, Created for Macy's",
+            "originalPrice": "$ 420",
+            "currentPrice": "$ 300",
+            "shipping": "Free shipping at $350"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/8977597_fpx.tif",
+            "productId": 1620213,
+            "brand": "Bar III",
+            "detail": "Flyaway Leather Jacket,Created for Macy's",
+            "originalPrice": "$ 420",
+            "currentPrice": "$ 350",
+            "shipping": "Free shipping at $330"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/15369543_fpx.tif",
+            "productId": 10190988,
+            "brand": "Alfani",
+            "detail": "Faux-Leather Fleece Jacket",
+            "originalPrice": "$ 520",
+            "currentPrice": "$ 450",
+            "shipping": "Free shipping at $400"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/1/optimized/15123741_fpx.tif",
+            "productId": 6793420,
+            "brand": "Anne Klein",
+            "detail": "Faux-Suede Asymmetrical Jacket",
+            "originalPrice": "$ 220",
+            "currentPrice": "$ 180",
+            "shipping": "Free shipping at $200"
+        },
+        {
+            "productUrl": "https://slimages.macysassets.com/is/image/MCY/products/5/optimized/14622255_fpx.tif",
+            "productId": 9538347,
+            "brand": "INC Corduroy Moto Jacket",
+            "detail": "INC Corduroy Moto Jacket, Created for Macy's",
+            "originalPrice": "$ 520",
+            "currentPrice": "$ 580",
+            "shipping": "Free shipping at $500"
+        }
+    ]
+}

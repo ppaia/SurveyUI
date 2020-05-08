@@ -1,0 +1,42 @@
+.colorsList{
+    width:100%;
+    display: block;
+  }
+  .ColorIcon{
+    border-radius: 70%;
+    height: 2.25rem;
+    width: 2.25rem;
+    border: .0625rem solid #e6e6e6;
+  }
+  .span{
+    float: right;
+    text-align: center;
+    width:15%;
+}
+.ActiveClass {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+.InActiveClass {
+   display: inline-block;
+   margin-right: 5px;
+}
+.SizeChartDiv{
+  padding: 10px 0px;
+}
+.sizeChart{
+  text-decoration: underline;
+  font-family: Helvetica-Light-snapshot,Arial,Helvetica,Verdana,sans-serif;
+    color: #333;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+}
+.sizeChart:hover{
+  text-decoration: underline;
+  background-color: transparent;
+}

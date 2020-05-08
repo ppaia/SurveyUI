@@ -1,0 +1,83 @@
+/* accordion plus minus icon css */
+.accordion__button:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f067";
+    padding-right: 5px;
+    transform:none;
+    border:none;
+}
+.accordion__button[aria-expanded='true']::before {
+   content:"\f068";
+   transform:none;
+   border:none;
+}
+
+/* Accordion css */
+#accord{
+  margin-top: 10px;
+}
+.description {
+    margin: 18px;
+    font-size: 14px;
+    padding: 0;
+    letter-spacing: 0.1px;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+#policyTerms {
+    color: black;
+    text-decoration: underline;
+}
+#lineSpacing {
+    line-height: 28px;
+}
+
+#shippingTerms {
+    line-height: 28px;
+    font-size: 14px;
+    margin-top: -6px !important;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+#priceTag {
+    display: inline-block;
+}
+
+#setSize {
+    font-size: 14px;
+    color: red;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+#setColor {
+    font-size: 14px;
+    color: red !important;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+#descText {
+    font-size: 12px;
+    color: black !important;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* social icons css */
+.icons img {
+    height: 25px;
+    width: 25px;
+}
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+}
+.accordion__button, .accordion__button:hover{
+    background-color: white;
+}
+.accordion {
+    border-top: 1px solid #d6d6d6 !important;
+    border-left:none!important;
+    border-bottom:none!important;
+    border-right:none!important;
+  } 

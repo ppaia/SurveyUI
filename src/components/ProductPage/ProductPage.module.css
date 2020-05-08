@@ -1,0 +1,391 @@
+.productPage{
+    padding: 0 32px;
+}
+.pdpTitle{
+    margin-bottom: 0;
+}
+.pdpTitle a{
+    font-family: Whitney;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: none;
+    line-height: inherit;
+    color: #000;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-style: normal;
+    letter-spacing: .2px;
+    background-color: transparent;
+  }
+  .pdpTitle a:hover{
+      text-decoration: underline;
+      color: #000;
+  }
+  .pdpDescription{
+      color: #696E79;
+      font-size: 17px;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      display: inline-block;
+  }
+  .pdpSellingPrice {
+    /* color: #e01a2b; */
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: inherit;
+    letter-spacing: .1px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
+  .pdpSellingPrice span{
+    font-weight: 400;
+    line-height: inherit;
+    font-size: .75rem;
+  }
+  .pdpVatInfo {
+    color: #03A685;
+    font-weight: 500;
+    font-size: 14px;
+    display: block;
+    margin: 5px 10px 0px 0px;
+  }
+  .prodDetails{
+    font-size: 20px;
+    color: #403333;
+    padding-top: 10px;
+  }
+  .pdpSizeSelect,.pdpColorContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .pdpSizeSelect{
+    display: flex;
+    flex-flow: row;
+  }
+  .sizeList{
+    width: 90%;
+  }
+  .card-img-top{
+    transform: scale(1);
+    display: inline-block;
+    padding-left: 50px;
+    padding-top: 60px;
+  } 
+  .card-img-top:hover{
+    transform:scale(1.1);
+  }
+  .pdpColor{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .pdpDescriptionContainer{
+    min-height: 820px;
+    width: 42%;
+    float: left;
+    padding: 0 0 0 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .pdpPriceInfo{
+    margin-top: 0px;
+    padding: 0px 0px 10px 0px;
+  }
+  .pdpDetails{
+    font-size: 1.125rem;
+    margin-bottom: 0;
+    line-height:1.22222;
+    margin-top: 0;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .2px;
+    color: inherit;
+    text-rendering: optimizeLegibility;
+  }
+  .starRating{
+      display: flex;
+      flex-flow: row;
+  }
+  .starRating span a{
+      color:#000;
+      text-decoration: underline;
+      font-size: .875rem;
+      letter-spacing: .1px;
+      line-height: 1.25rem;
+  }
+  .starRating label{
+      margin-bottom: 0;
+  }
+  .PriceType{
+    /* color: #e01a2b; */
+    letter-spacing: .1px;
+    margin:0;
+    padding: 0;
+    line-height: 1.25rem;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
+  .pdpOriginalPrice{
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: .2px;
+    line-height: 1.125rem;
+    margin-bottom: 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: #000;
+  }
+  .offers{
+    display: flex;
+    flex-flow: row;
+  }
+  .OffersBadge{
+    font-weight: 400;
+    letter-spacing: .1px;
+    color: #e01a2b;
+    width: 100%;
+  }
+  .Details, .Details a{
+    color: #626369;
+    padding-right: .375rem;
+    font-size: .75rem;
+    cursor: pointer;
+  }
+  .ButtonSize{
+    background: #fff;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    margin: .25rem;
+    padding: 0 .5rem;
+    border: .0625rem solid #d6d6d6;
+    line-height: 2.875rem;
+    height: 3rem;
+    min-width: 4.375rem;
+    letter-spacing: .2px;
+    color: #000;
+  }
+  .ButtonSize:hover, .ButtonSize:active{
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+  }
+  .seperator{
+    color: #e6e6e6;
+  }
+  .ColorIcon{
+    border-radius: 50%;
+    height: 2.25rem;
+    width: 2.25rem;
+    border: .0625rem solid #e6e6e6;
+    margin:3px;
+  }
+  .colorStyle{
+    font-weight: 700;
+    line-height: inherit;
+  }
+
+  .colorsDiv{
+    display: flex;
+    flex-flow: row;
+    padding: 5px 0 10px 0;
+  }
+  .colorsList{
+    width:100%;
+  }
+ 
+/* .SeeAllColors a{
+  color:#000;
+  text-decoration: underline;
+}
+.pdpSizeSelect span a{
+  color:#000;
+  text-decoration: underline;
+} */
+.Breadcrumb nav ol{
+  background-color: transparent;
+  color:#000;
+  text-decoration: underline;
+  padding-left: 32px;
+}
+.Breadcrumb nav ol li {
+  padding-left: 0.2rem!important;
+}
+.Breadcrumb nav ol li::before{
+  padding-right: 0.2rem!important
+}
+.Breadcrumb nav ol li a{
+  background-color: transparent;
+  color:#000;
+  text-decoration: underline;
+  padding-left: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.writeAReview{
+  display: flex;
+}
+.firstReview{
+  color:#000;
+  font-size: 12px;
+}
+.firstReview a{
+  color:#000;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.iconStar{
+  width: 15px;
+  height: 15px;
+  background-size: 15px 15px;
+}
+
+.sizeChart{
+  text-decoration: underline;
+  color: #626369;
+}
+.sizeChart:hover{
+  text-decoration: none;
+  color: #626369;
+}
+.quantValue{
+  width: 2.5rem;
+  font-weight: 700;
+  line-height: inherit;
+  color:#000;
+}
+.lessMoreButton button{
+  cursor: pointer;
+  border: 1px solid #d6d6d6;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  width:60px;
+  height:36px;
+  padding: 0;
+  letter-spacing: .1px;
+  background: transparent;
+  border-radius: 0;
+}
+.lessMoreButton button:hover, .lessMoreButton button:active ,.Minus:active, .Plus:active{
+  cursor: pointer;
+  border: 1px solid #d6d6d6;
+  color: #000;
+  background: transparent;
+}
+
+.Minus:disabled{
+  cursor: not-allowed;
+  background-color: transparent;
+  color:#000;
+  border: 1px solid #d6d6d6;
+}
+.pdpButton{
+  display: flex;
+  flex-flow: row;
+}
+.AddToBag{
+padding: .813em 1.5em;
+border-radius: 0;
+transition: background-color .25s ease-out,color .25s ease-out;
+font-size: 1rem;
+line-height: 1;
+text-align: center;
+width:100%;
+cursor: pointer;
+text-transform: capitalize;
+border: 1px solid #e01a2b;
+font-weight: 700;
+background-color: #e01a2b;
+color: #fff;
+}
+.AddToBag:hover{
+background-color:  #9a4a4a;
+border:1px solid #9a4a4a;
+}
+.AddToList{
+padding: .813em 1.5em;
+border-radius: 0;
+transition: background-color .25s ease-out,color .25s ease-out;
+font-size: 1rem;
+line-height: 1;
+text-align: center;
+cursor: pointer;
+text-transform: capitalize;
+font-weight: 700;
+background-color: #fff;
+color: #000;
+border: 1px solid transparent;
+border-color: #000;
+color: #000;
+font-weight: 400;
+width:100%;
+}
+.AddToList:hover{
+background-color: #dfe0e0;
+border-color: #000;
+color: #000;
+}
+
+.review{
+  margin-top: .3125rem;
+  margin-bottom: .3125rem;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.review a{
+  line-height: inherit;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+.pdpgrey{
+  color: #626369;
+}
+.pdpoffer{
+  margin-bottom: .625rem;
+}
+.pdpgrey a{
+  text-decoration: underline;
+}
+.size{
+  margin-top: .3125rem;
+  margin-bottom: .3125rem;
+}
+.Quantity{
+  margin-top: 1.3125rem;
+  margin-bottom: 1.3125rem;
+}
+
+.imagegrid{
+  margin-bottom: 1%;
+  position: relative;
+  margin-top: -4%;
+}
+
+.colorName span{
+  font-weight: 700;
+  line-height: inherit;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #000;
+}
+
+.pdpNowPrice{
+  color: #e01a2b;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.pdpNowPrice span{
+  color: #e01a2b;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.SizeDiv{
+  width: 100%;
+}

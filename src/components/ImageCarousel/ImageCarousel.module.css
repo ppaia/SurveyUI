@@ -1,0 +1,127 @@
+.Carousel{
+    height: 400px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.CarouselImage{
+    padding:5px;
+}
+.BigImage{
+    width: 70%;
+    float: right;
+}
+.BigImage img{
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.slider{
+    margin: 35px;
+}
+
+.sliderArea { 
+    width: 100px;
+    float: left;
+    height: 460px;
+    position: relative;
+    top:22px;
+}
+
+.sliderBlock {
+    position: relative;
+    height: 500px;
+    width: 100px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    top: 0px;
+    -webkit-transition: top 0.5s ease-out;
+    -moz-transition: top 0.5s ease-out;
+    -o-transition: top 0.5s ease-out;
+    transition: top 0.5s ease-out;
+}
+.sliderThumb {
+    width: 75px;
+    height: 100px;
+    overflow: hidden;
+    padding:5px;
+}
+.sliderArea .sliderControTop {
+    position: absolute;
+    top: -22px;
+    left: 0px;
+    width: 75%;
+    text-align: center;
+}
+.sliderArea .sliderControTop:hover {
+    background-color: transparent!important;
+}
+.sliderArea .sliderControlBottom {
+    position: absolute;
+    bottom: 35px;
+    left: 0px;
+    width: 75%;
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.sliderArea .sliderControlBottom:hover {
+    background-color: transparent!important;
+}
+.arrowUp {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+.arrowDown {
+     border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+    transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.activeImage {
+    border-left: 2px solid red;
+}
+
+.InActiveImage {
+    border-left: none;
+}
+
+.BigImage:hover {
+    
+    cursor: zoom-in;
+    max-width: 500px;
+    max-height: 550px;
+    width: auto;
+
+  }
