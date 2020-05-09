@@ -10,6 +10,7 @@ class MacysHeader extends Component {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
+        this.changeState = this.changeState.bind(this);
         this.state = {
             inputField: ''
         };
@@ -27,6 +28,11 @@ class MacysHeader extends Component {
         this.setState({
             inputField: event.target.value
         });
+    }
+
+    changeState(event) {
+        event.preventDefault();
+        this.props.handlerForSurvey(true);
     }
     render() {
         return (
@@ -67,6 +73,7 @@ class MacysHeader extends Component {
                                         />
                                     </span>
                                 </Nav.Link>
+                                <Nav.Link href="#" onClick={this.changeState} className={classes.Survey}>TAKE A SURVEY</Nav.Link>
                             </Nav>
 
                         </Navbar.Collapse>

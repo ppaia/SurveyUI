@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Container, Button } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 
 class Customer extends Component {
     constructor(props) {
@@ -17,7 +17,6 @@ class Customer extends Component {
     }
 
     onChangeValue(event) {
-        console.log(event.target.value);
         this.setState({ [event.target.name]: event.target.value })
     }
 
@@ -43,7 +42,7 @@ class Customer extends Component {
                         <div onChange={this.onChangeValue}>
                             <input type="radio" value="Male" name="gender" /><span className="gender">Male</span>
                             <input type="radio" value="Female" name="gender" /><span className="gender">Female</span>
-                            <input type="radio" value="NA" name="gender" /><span className="gender">NA</span>
+                            <input type="radio" value="Won't disclose" name="gender" /><span className="gender">Won't disclose</span>
                         </div>
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlSelect1">

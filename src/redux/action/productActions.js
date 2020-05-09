@@ -45,3 +45,10 @@ export const expandSize = (expandSize) => {
         payload: expandSize
     }
 };
+
+export const isSurvey = (survey) =>{
+    return{
+        type: actionTypes.IS_SURVEY,
+        payload: survey
+    }
+}

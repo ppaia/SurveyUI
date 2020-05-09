@@ -4,5 +4,6 @@ export {
     loadColors,
     setColorName,
     expandColor,
-    expandSize
+    expandSize,
+    isSurvey
 } from './productActions';

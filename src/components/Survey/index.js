@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import Customer from './Customer';
+import SurveyComplete from './SurveyComplete';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/action/index';
 
-class Chatbot extends Component {
+class Survey extends Component {
     messagesEnd;
     constructor(props) {
         super(props);
@@ -14,11 +17,12 @@ class Chatbot extends Component {
             isCustomer: true,
             count: 0,
             surveyId: 0,
-            comments: ''
+            comments: '',
+            surveyComplete: false
         }
     }
     componentDidMount() {
-        axios.get('http://c6c61b29.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
+        axios.get('http://69d6fbf7.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
             .then(res => {
                 const survey = res.data;
                 this.setState({ survey });
@@ -60,7 +64,7 @@ class Chatbot extends Component {
             pincode: customer.pincode
         };
 
-        const result = await axios.post(`http://c6c61b29.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
+        const result = await axios.post(`http://69d6fbf7.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
         const res = await result.data;
         this.setState({ surveyId: res.surveyId })
         this.setState({ isCustomer: !this.state.isCustomer })
@@ -72,13 +76,18 @@ class Chatbot extends Component {
             surveyId: this.state.surveyId,
             answers: this.state.answers
         }
-        const result = await axios.post(`http://c6c61b29.ngrok.io/rest/chatbot/survey/save `, survey);
-        const res = await result.data;
+        const result = await axios.post(`http://69d6fbf7.ngrok.io/rest/chatbot/survey/save `, survey);
+        this.setState({ surveyComplete: !this.state.surveyComplete })
     }
 
     _handleChange = e => {
         e.preventDefault();
         this.setState({ comments: e.target.value })
+    }
+
+    _handleClose = e => {
+        e.preventDefault();
+        this.props.isSurvey(false);
     }
 
     renderRespSurvey() {
@@ -96,20 +105,23 @@ class Chatbot extends Component {
                         </div>
                         {
                             (survey.option === 'Y' || survey.option === 'N') &&
-                            <div className="d-flex justify-content-center mb-2">
+                            <div className="d-flex justify-content-start mb-2 ml-4">
                                 <button className="btn-oval bt-yes">Yes</button>
                                 <button className="btn-oval bt-no">No</button>
                             </div>
                         }
-                        <div className="d-flex justify-content-end mb-2">
+                        <div className="d-flex justify-content-end mb-4">
                             {
                                 (survey.option === 'Y' || survey.option === 'N') ?
                                     <button className={`btn-oval ${survey.option === 'Y' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Y' ? 'Yes' : 'No'}</button>
-                                    : this.state.comments
+                                    :
+                                    <div className="user_msg_container">
+                                        {this.state.comments}
+                                    </div>
                             }
 
                             <div className="img_cont_msg">
-                                <img src={require('../../images/user.png')} class="rounded-circle user_img_msg" />
+                                <img src={require('../../images/user.png')} className="rounded-circle user_img_msg" />
                             </div>
                         </div>
                     </div >
@@ -131,13 +143,13 @@ class Chatbot extends Component {
                 </div>
                 {
                     survey[this.state.count].option === 'Comments' ?
-                        <div className="d-flex justify-content-center mb-2">
-                            <Form.Group controlId="exampleForm.ControlTextarea1" onBlur={e => this._handleClick(e)}>
-                                <Form.Control as="textarea" rows="3" columns="10" value={this.state.comments} onChange={e => this._handleChange(e)} />
+                        <div className="d-flex justify-content-start mb-2">
+                            <Form.Group controlId="comments" onBlur={e => this._handleClick(e)}>
+                                <Form.Control as="textarea" className="comments ml-1" rows="3" value={this.state.comments} onChange={e => this._handleChange(e)} />
                             </Form.Group>
                         </div>
                         :
-                        <div className="d-flex justify-content-center mb-2">
+                        <div className="d-flex justify-content-start mb-2 ml-4">
                             <button className="btn-oval bt-yes" value="Y" onClick={e => this._handleClick(e)}>Yes</button>
                             <button className="btn-oval bt-no" value="N" onClick={e => this._handleClick(e)}>No</button>
                         </div>
@@ -165,34 +177,43 @@ class Chatbot extends Component {
             </div>
         )
     }
-    
+
     render() {
         return (
-            <div class="container">
-                <div class="row justify-content-end chat">
-                    <div class="card">
-                        <div class="card-header msg_head">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" class="rounded-circle user_img" />
-                                    {/* <img src={require('../images/chatbot-macys.png')} class="rounded-circle user_img" /> */}
-                                    <span class="online_icon"></span>
+            <div className="container">
+                <div className="row justify-content-end chat">
+                    <div className="card">
+                        <div className="card-header msg_head">
+                            <div className="d-flex bd-highlight">
+                                <div className="img_cont">
+                                    <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" className="rounded-circle user_img" />
+                                    <span className="online_icon"></span>
                                 </div>
-                                <div class="user_info">
-                                    <span>Macy's Virtual Agent</span>
+                                <div className="user_info">
+                                    <span>Macy's Survey</span>
+                                </div>
+                                <div id="action_menu_btn">
+                                    <img src={require('../../images/close-icon.png')} onClick={this._handleClose} className="rounded-circle close_img" />
                                 </div>
                             </div>
                         </div>
-                        {
-                            this.state.isCustomer &&
-                            <div>
-                                <Customer customerDetails={this._handleCustomer} />
-                            </div>
+                        {!this.state.surveyComplete ?
+                            <>
+                                {
+                                    this.state.isCustomer &&
+                                    <div>
+                                        <Customer customerDetails={this._handleCustomer} />
+                                    </div>
+                                }
+                                {
+                                    !this.state.isCustomer && this.state.survey.length > 0 &&
+                                    this.renderCard(this.state.survey)
+                                }
+                            </>
+                            :
+                            <SurveyComplete />
                         }
-                        {
-                            !this.state.isCustomer && this.state.survey.length > 0 &&
-                            this.renderCard(this.state.survey)
-                        }
+
                         <div style={{ float: "left", clear: "both" }}
                             ref={(el) => { this.messagesEnd = el; }}>
                         </div>
@@ -203,4 +224,16 @@ class Chatbot extends Component {
     }
 }
 
-export default Chatbot;
+const mapStateToProps = state => {
+    return {
+        pData: state.productData
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        isSurvey: (openState) => dispatch(actions.isSurvey(openState))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);

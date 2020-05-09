@@ -63,6 +63,14 @@
     font-weight: 400;
     font-size: 12px;
 }
+.Survey{
+    text-transform: capitalize;
+    color: #cc0000!important;
+    background-color: transparent;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+}
 .NavCategory a:hover{
     text-decoration: underline;
 }

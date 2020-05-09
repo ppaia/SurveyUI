@@ -26,17 +26,17 @@ const getColors = (state, action) => {
         }
     }
 }
-const getColorName=(state,action)=>{
-    console.log('reducer colorname',action.payload)
-    return{
+const getColorName = (state, action) => {
+    console.log('reducer colorname', action.payload)
+    return {
         ...state,
-        productData:{
+        productData: {
             ...state.productData,
-            traits:{
+            traits: {
                 ...state.productData.traits,
-                colors:{
+                colors: {
                     ...state.productData.traits.colors,
-                    colorName:action.payload
+                    colorName: action.payload
                 }
             }
 
@@ -44,19 +44,25 @@ const getColorName=(state,action)=>{
     }
 }
 
-const expandColor=(state, action) => {
+const expandColor = (state, action) => {
     console.log("reducer expandColor", action.payload);
-    return{
+    return {
         ...state,
         expandColor: action.payload
     }
 }
 
-const expandSize=(state, action) => {
+const expandSize = (state, action) => {
     console.log("reducer expandSize", action.payload);
-    return{
+    return {
         ...state,
         expandSize: action.payload
+    }
+}
+const isSurvey = (state, action) => {
+    return {
+        ...state,
+        isSurvey: action.payload
     }
 }
 
@@ -74,6 +80,8 @@ export default (state = {}, action) => {
             return expandColor(state, action);
         case actionTypes.EXPAND_SIZE:
             return expandSize(state, action);
+        case actionTypes.IS_SURVEY:
+            return isSurvey(state, action);
         default:
             return state
     }

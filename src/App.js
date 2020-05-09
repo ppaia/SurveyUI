@@ -10,35 +10,42 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch, faUser, faCaretDown, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
-import VirtualAgent from './components/VirtualAgent';
+import Survey from './components/Survey';
 library.add(faSearch, faUser, faCaretDown, faAngleDown, faAngleUp);
 
 class App extends Component {
   constructor() {
     super();
     this.handleData = this.handleData.bind(this);
+    this.handleSurvey = this.handleSurvey.bind(this);
   }
 
   handleData(productId) {
     this.props.fetchProduct(productId);
     this.props.expandColor(false);
     this.props.expandSize(false);
+
+  }
+  handleSurvey(survey) {
+    this.props.isSurvey(survey);
   }
 
   componentDidMount() {
     this.props.fetchProduct();
     this.props.expandColor(false);
     this.props.expandSize(false);
+    this.props.isSurvey(false);
   }
 
   render() {
+    const { pData } = this.props;
     return (
       <div>
-        <MacysHeader handlerFromParent={this.handleData} />
+        <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} />
         {(this.props.pData && this.props.pData.productData) ? <ProductPage product={this.props.pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={this.props.pData.expandColor} expandColorFn={this.props.expandColor} expandSize={this.props.pData.expandSize} expandSizeFn={this.props.expandSize}
         /> : <Spinner />}
         <ImageSlider />
-        <VirtualAgent />
+        {pData && pData.isSurvey && <Survey />}
         <Footer />
       </div>
     );
@@ -58,7 +65,8 @@ const mapDispatchToProps = dispatch => {
     loadColors: (colorMap) => dispatch(actions.loadColors(colorMap)),
     setColorName: (color) => dispatch(actions.setColorName(color)),
     expandColor: (openState) => dispatch(actions.expandColor(openState)),
-    expandSize: (openState) => dispatch(actions.expandSize(openState))
+    expandSize: (openState) => dispatch(actions.expandSize(openState)),
+    isSurvey: (openState) => dispatch(actions.isSurvey(openState))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
