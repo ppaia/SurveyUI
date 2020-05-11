@@ -141,6 +141,7 @@
     width: 100px;
     height: 25px;
     font-weight: 600;
+    animation: blinker 0.8s linear infinite;
     
   }
   .btn-yes:hover{
@@ -233,6 +234,12 @@
   }
   .comments{
     width: 300px;
+  }
+
+  @keyframes blinker {
+    40% {
+      opacity: 0;
+    }
   }
   
   

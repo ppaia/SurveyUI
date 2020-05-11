@@ -32,6 +32,7 @@ class App extends Component {
   }
 
   handlePage(page) {
+    this.props.isSurvey(false);
     this.props.pageType(page);
   }
 
