@@ -4,13 +4,21 @@ import SurveyGraph from "./SurveyGraph";
 import GenderGraph from "./GenderGraph";
 import SearchCountGraph from "./SearchCountGraph";
 import PincodeGraph from "./PincodeGraph";
+import Surveys from "./Surveys";
 
 class RootComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: []
+      errors: [],
+      toggleSurveys: false
     };
+  }
+
+  toggleSurveys() {
+    this.setState({
+      toggleSurveys: !this.state.toggleSurveys
+    });
   }
 
   render() {
@@ -23,11 +31,26 @@ class RootComponent extends Component {
       ));
     }
 
+    let surveys = "";
+    if (this.state.toggleSurveys) {
+      surveys = (
+        <Surveys />
+      );
+    }
+
+
     return (
-      <div className="container-fluid">
+      <div className="container-fluid pad_0_4rem mb-5">
         <div className="row">
-          <h2 className="mt-3 title_head">Home</h2>
-          {errors}
+          <div className="col d-flex">
+            <h2 className="mt-3 title_head">Dashboard</h2>
+            <h3 className="mt-3 title_head text-right"><button onClick={this.toggleSurveys.bind(this)} className="btn btn-light">Show Surveys</button></h3>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            {errors}
+          </div>
         </div>
         <div className="row">
           <div className={"chart-container chart_sizes"}>
@@ -42,6 +65,7 @@ class RootComponent extends Component {
             <PincodeGraph />
           </div>
         </div>
+        {surveys}
       </div>
     );
   }

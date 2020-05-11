@@ -247,3 +247,7 @@ tr:nth-child(even) {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.pad_0_4rem {
+  padding: 0 4rem;
+}

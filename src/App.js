@@ -12,7 +12,6 @@ import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import Survey from './components/Survey';
 import RootComponent from "./components/Graphs/RootComponent";
-import Surveys from "./components/Graphs/Surveys";
 library.add(faSearch, faUser, faCaretDown, faAngleDown, faAngleUp);
 
 class App extends Component {
@@ -55,7 +54,6 @@ class App extends Component {
           pData && pData.pageType === 'admin' ?
             <>
               <RootComponent />
-              <Surveys />
             </>
             :
             <>
