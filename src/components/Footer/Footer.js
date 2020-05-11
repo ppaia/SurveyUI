@@ -102,19 +102,19 @@ class Footer extends Component {
                             <Row className="cardText"><img src={star} alt="star icon" />Star Rewards SignUp</Row>
 
                             <Row className="imageIcons">
-                                <a href="#">
+                                <a href="/">
                                     <img src={facebook} alt="facebook icon" />
                                 </a>
-                                <a href="#">
+                                <a href="/">
                                     <img src={insta} alt="instagram icon" />
                                 </a>
-                                <a href="#">
+                                <a href="/">
                                     <img src={twitter} alt="twitter icon" />
                                 </a>
-                                <a href="#">
+                                <a href="/">
                                     <img src={pinterest} alt="pinterest icon" />
                                 </a>
-                                <a href="#">
+                                <a href="/">
                                     <img src={youtube} alt="youtube icon" />
                                 </a>
                             </Row>
@@ -137,8 +137,8 @@ class Footer extends Component {
                     © 2020 macys.com is a registered trademark. All rights reserved. Macys.com, LLC, 680 Folsom St. San Francisco, CA 94107. Macy's Credit and Customer Service, PO Box 8113, Mason, Ohio 45040. Request our corporate name & address by email.
                     </Row>
                     <Row className="webBrowsing">
-                    <a href="">Privacy Notice |</a><a href="">Do Not Sell My Info |</a><a href="">Interest Based Ads |</a><a href=""> CA Privacy Rights |</a><a href=""> Legal Notice |</a><a href=""> Customer Bill of Rights |</a>
-                    <a href="">CA Transparency in Supply Chains |</a><a href="">  Product Recalls |</a><a href=""> Pricing Policy |</a><a href=""> Site Map</a>
+                    <a href="/">Privacy Notice |</a><a href="/">Do Not Sell My Info |</a><a href="/">Interest Based Ads |</a><a href="/"> CA Privacy Rights |</a><a href="/"> Legal Notice |</a><a href="/"> Customer Bill of Rights |</a>
+                    <a href="/">CA Transparency in Supply Chains |</a><a href="/">  Product Recalls |</a><a href="/"> Pricing Policy |</a><a href="/"> Site Map</a>
                     </Row>
                     </Container>
             </div>
