@@ -51,21 +51,28 @@ class App extends Component {
     return (
       <div>
         <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} handlerPageSwitch={this.handlePage} />
-        {(this.props.pData && this.props.pData.productData) ? <ProductPage product={this.props.pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={this.props.pData.expandColor} expandColorFn={this.props.expandColor} expandSize={this.props.pData.expandSize} expandSizeFn={this.props.expandSize}
-        /> : <Spinner />}
-        <ImageSlider />
         {
           pData && pData.pageType === 'admin' ?
-            <Fragment>
+            <>
               <RootComponent />
               <Surveys />
-            </Fragment>
+            </>
             :
-            <Fragment>
+            <>
               {
-                pData && pData.isSurvey && pData.pageType === 'pdp' && <Survey />
+                pData && pData.pageType === 'pdp' &&
+                <>
+                  {(pData && pData.productData) ?
+                    <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
+                      expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
+                    /> : <Spinner />}
+                  <ImageSlider />
+                  {
+                    pData.isSurvey && <Survey />
+                  }
+                </>
               }
-            </Fragment>
+            </>
         }
         <Footer />
       </div>

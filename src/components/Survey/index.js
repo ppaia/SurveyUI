@@ -22,7 +22,7 @@ class Survey extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://abd936f7.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
+        axios.get('http://afe1fadd.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
             .then(res => {
                 const survey = res.data;
                 this.setState({ survey });
@@ -64,7 +64,7 @@ class Survey extends Component {
             pincode: customer.pincode
         };
 
-        const result = await axios.post(`http://abd936f7.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
+        const result = await axios.post(`http://afe1fadd.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
         const res = await result.data;
         this.setState({ surveyId: res.surveyId })
         this.setState({ isCustomer: !this.state.isCustomer })
@@ -76,7 +76,7 @@ class Survey extends Component {
             surveyId: this.state.surveyId,
             answers: this.state.answers
         }
-        const result = await axios.post(`http://abd936f7.ngrok.io/rest/chatbot/survey/save `, survey);
+        const result = await axios.post(`http://afe1fadd.ngrok.io/rest/chatbot/survey/save `, survey);
         this.setState({ surveyComplete: !this.state.surveyComplete })
     }
 
@@ -104,7 +104,7 @@ class Survey extends Component {
                             </div>
                         </div>
                         {
-                            (survey.option === 'Y' || survey.option === 'N') &&
+                            (survey.option === 'Yes' || survey.option === 'No') &&
                             <div className="d-flex justify-content-start mb-4 ml-4">
                                 <button className="btn-oval bt-yes">Yes</button>
                                 <button className="btn-oval bt-no">No</button>
@@ -112,8 +112,8 @@ class Survey extends Component {
                         }
                         <div className="d-flex justify-content-end mb-5">
                             {
-                                (survey.option === 'Y' || survey.option === 'N') ?
-                                    <button className={`btn-oval ${survey.option === 'Y' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Y' ? 'Yes' : 'No'}</button>
+                                (survey.option === 'Yes' || survey.option === 'No') ?
+                                    <button className={`btn-oval ${survey.option === 'Yes' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Yes' ? 'Yes' : 'No'}</button>
                                     :
                                     <div className="user_msg_container">
                                         {this.state.comments}
@@ -155,8 +155,8 @@ class Survey extends Component {
                         </div>
                         :
                         <div className="d-flex justify-content-start mb-4 ml-4">
-                            <button className="btn-oval bt-yes" value="Y" onClick={e => this._handleClick(e)}>Yes</button>
-                            <button className="btn-oval bt-no" value="N" onClick={e => this._handleClick(e)}>No</button>
+                            <button className="btn-oval bt-yes" value="Yes" onClick={e => this._handleClick(e)}>Yes</button>
+                            <button className="btn-oval bt-no" value="No" onClick={e => this._handleClick(e)}>No</button>
                         </div>
                 }
             </>
