@@ -218,7 +218,6 @@ class Survey extends Component {
                             :
                             <SurveyComplete />
                         }
-
                         <div style={{ float: "left", clear: "both" }}
                             ref={(el) => { this.messagesEnd = el; }}>
                         </div>
