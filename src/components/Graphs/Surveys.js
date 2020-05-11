@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Table from 'react-bootstrap/table';
+import { Table } from 'react-bootstrap';
 import Modal from "./Modal";
 
 class Surveys extends Component {
