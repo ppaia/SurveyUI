@@ -20,7 +20,7 @@ class PincodeGraph extends Component {
             .then((data) => {
     
                 let requiredData = [
-                    ['Gender', 'Count']
+                    ['Location', 'Count']
                 ];
 
                 Object.keys(data).map(key => {
@@ -45,7 +45,7 @@ class PincodeGraph extends Component {
             <Chart
                 width={'500px'}
                 height={'300px'}
-                chartType="PieChart"
+                chartType="Bar"
                 loader={<Loader
                     className="bars_loader"
                     type="Bars"
@@ -56,7 +56,7 @@ class PincodeGraph extends Component {
                 />}
                 data={(this.state.graphData.length) ? this.state.graphData : ""}
                 options={{
-                    title: 'Based on Gender',
+                    title: 'Based on Location',
                     // Just add this option
                     is3D: true,
                     fontSize: 16,
