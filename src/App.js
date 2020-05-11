@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import MacysHeader from "./components/Header/MacysHeader";
 import './App.css';
 import './styles.css';
@@ -11,6 +11,8 @@ import { faSearch, faUser, faCaretDown, faAngleDown, faAngleUp } from '@fortawes
 import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import Survey from './components/Survey';
+import RootComponent from "./components/Graphs/RootComponent";
+import Surveys from "./components/Graphs/Surveys";
 library.add(faSearch, faUser, faCaretDown, faAngleDown, faAngleUp);
 
 class App extends Component {
@@ -52,14 +54,18 @@ class App extends Component {
         {(this.props.pData && this.props.pData.productData) ? <ProductPage product={this.props.pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={this.props.pData.expandColor} expandColorFn={this.props.expandColor} expandSize={this.props.pData.expandSize} expandSizeFn={this.props.expandSize}
         /> : <Spinner />}
         <ImageSlider />
-        {pData && pData.isSurvey &&
-          <>
-            {
-              pData.pageType === 'pdp' ?
-                <Survey />
-                : null
-            }
-          </>
+        {
+          pData && pData.pageType === 'admin' ?
+            <Fragment>
+              <RootComponent />
+              <Surveys />
+            </Fragment>
+            :
+            <Fragment>
+              {
+                pData && pData.isSurvey && pData.pageType === 'pdp' && <Survey />
+              }
+            </Fragment>
         }
         <Footer />
       </div>

@@ -15,6 +15,7 @@
     "react-accessible-accordion": "^3.0.1",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
+    "react-google-charts": "^3.0.15",
     "react-id-swiper": "^2.4.0",
     "react-img-zoom": "^0.1.0",
     "react-loader-spinner": "^3.1.5",
