@@ -18,6 +18,7 @@ class App extends Component {
     super();
     this.handleData = this.handleData.bind(this);
     this.handleSurvey = this.handleSurvey.bind(this);
+    this.handlePage = this.handlePage.bind(this);
   }
 
   handleData(productId) {
@@ -30,22 +31,35 @@ class App extends Component {
     this.props.isSurvey(survey);
   }
 
+  handlePage(page) {
+    this.props.pageType(page);
+  }
+
   componentDidMount() {
     this.props.fetchProduct();
     this.props.expandColor(false);
     this.props.expandSize(false);
     this.props.isSurvey(false);
+    this.props.pageType('pdp');
   }
 
   render() {
     const { pData } = this.props;
     return (
       <div>
-        <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} />
+        <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} handlerPageSwitch={this.handlePage} />
         {(this.props.pData && this.props.pData.productData) ? <ProductPage product={this.props.pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={this.props.pData.expandColor} expandColorFn={this.props.expandColor} expandSize={this.props.pData.expandSize} expandSizeFn={this.props.expandSize}
         /> : <Spinner />}
         <ImageSlider />
-        {pData && pData.isSurvey && <Survey />}
+        {pData && pData.isSurvey &&
+          <>
+            {
+              pData.pageType === 'pdp' ?
+                <Survey />
+                : null
+            }
+          </>
+        }
         <Footer />
       </div>
     );
@@ -66,7 +80,8 @@ const mapDispatchToProps = dispatch => {
     setColorName: (color) => dispatch(actions.setColorName(color)),
     expandColor: (openState) => dispatch(actions.expandColor(openState)),
     expandSize: (openState) => dispatch(actions.expandSize(openState)),
-    isSurvey: (openState) => dispatch(actions.isSurvey(openState))
+    isSurvey: (openState) => dispatch(actions.isSurvey(openState)),
+    pageType: (page) => dispatch(actions.pageType(page))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

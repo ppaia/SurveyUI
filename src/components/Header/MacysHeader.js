@@ -11,6 +11,7 @@ class MacysHeader extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
         this.changeState = this.changeState.bind(this);
+        this.switchPage = this.switchPage.bind(this);
         this.state = {
             inputField: ''
         };
@@ -34,6 +35,12 @@ class MacysHeader extends Component {
         event.preventDefault();
         this.props.handlerForSurvey(true);
     }
+
+    switchPage(event) {
+        event.preventDefault();
+        this.props.handlerPageSwitch(event.target.getAttribute('value'));
+    }
+
     render() {
         return (
             <div >
@@ -73,9 +80,11 @@ class MacysHeader extends Component {
                                         />
                                     </span>
                                 </Nav.Link>
-                                <Nav.Link href="#" onClick={this.changeState} className={classes.Survey}>TAKE A SURVEY</Nav.Link>
+                                <Nav.Link href="#" value="pdp" onClick={this.switchPage} className={classes.OrderTracking}>PDP</Nav.Link>
+                                <Nav.Link href="#" value="plp" onClick={this.switchPage} className={classes.OrderTracking}>PLP</Nav.Link>
+                                <Nav.Link href="#" value="admin" onClick={this.switchPage} className={classes.OrderTracking}>ADMIN</Nav.Link>
+                                <Button onClick={this.changeState} className="btn-yes ml-5">TAKE A SURVEY</Button>
                             </Nav>
-
                         </Navbar.Collapse>
                     </Navbar>
 

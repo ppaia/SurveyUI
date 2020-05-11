@@ -5,5 +5,6 @@ export {
     setColorName,
     expandColor,
     expandSize,
-    isSurvey
+    isSurvey,
+    pageType
 } from './productActions';

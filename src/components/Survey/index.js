@@ -22,7 +22,7 @@ class Survey extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://69d6fbf7.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
+        axios.get('http://abd936f7.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
             .then(res => {
                 const survey = res.data;
                 this.setState({ survey });
@@ -64,7 +64,7 @@ class Survey extends Component {
             pincode: customer.pincode
         };
 
-        const result = await axios.post(`http://69d6fbf7.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
+        const result = await axios.post(`http://abd936f7.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
         const res = await result.data;
         this.setState({ surveyId: res.surveyId })
         this.setState({ isCustomer: !this.state.isCustomer })
@@ -76,7 +76,7 @@ class Survey extends Component {
             surveyId: this.state.surveyId,
             answers: this.state.answers
         }
-        const result = await axios.post(`http://69d6fbf7.ngrok.io/rest/chatbot/survey/save `, survey);
+        const result = await axios.post(`http://abd936f7.ngrok.io/rest/chatbot/survey/save `, survey);
         this.setState({ surveyComplete: !this.state.surveyComplete })
     }
 
@@ -105,12 +105,12 @@ class Survey extends Component {
                         </div>
                         {
                             (survey.option === 'Y' || survey.option === 'N') &&
-                            <div className="d-flex justify-content-start mb-2 ml-4">
+                            <div className="d-flex justify-content-start mb-4 ml-4">
                                 <button className="btn-oval bt-yes">Yes</button>
                                 <button className="btn-oval bt-no">No</button>
                             </div>
                         }
-                        <div className="d-flex justify-content-end mb-4">
+                        <div className="d-flex justify-content-end mb-5">
                             {
                                 (survey.option === 'Y' || survey.option === 'N') ?
                                     <button className={`btn-oval ${survey.option === 'Y' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Y' ? 'Yes' : 'No'}</button>
@@ -144,12 +144,17 @@ class Survey extends Component {
                 {
                     survey[this.state.count].option === 'Comments' ?
                         <div className="d-flex justify-content-start mb-2">
-                            <Form.Group controlId="comments" onBlur={e => this._handleClick(e)}>
-                                <Form.Control as="textarea" className="comments ml-1" rows="3" value={this.state.comments} onChange={e => this._handleChange(e)} />
-                            </Form.Group>
+                            <div>
+                                <Form.Group controlId="comments" onBlur={e => this._handleClick(e)}>
+                                    <Form.Control as="textarea" className="comments ml-1" rows="3" value={this.state.comments} onChange={e => this._handleChange(e)} />
+                                </Form.Group>
+                            </div>
+                            <div>
+                                <img src={require('../../images/right_red.png')} onClick={e => this._handleChange(e)} className="rounded-circle next_img_msg" />
+                            </div>
                         </div>
                         :
-                        <div className="d-flex justify-content-start mb-2 ml-4">
+                        <div className="d-flex justify-content-start mb-4 ml-4">
                             <button className="btn-oval bt-yes" value="Y" onClick={e => this._handleClick(e)}>Yes</button>
                             <button className="btn-oval bt-no" value="N" onClick={e => this._handleClick(e)}>No</button>
                         </div>

@@ -9,8 +9,8 @@ export const setProduct = (product) => {
 };
 export const fetchProduct = (productId = "") => dispatch =>  {
     if (!productId) productId = 9001143;
-    return axios.get('http://dipx-mcom-126.tbe.zeus.fds.com:8080/xapi/digital/v1/product/' + productId)
-        // return axios.get('./products.json')
+    // return axios.get('http://dipx-mcom-126.tbe.zeus.fds.com:8080/xapi/digital/v1/product/' + productId)
+        return axios.get('./products.json')
         .then(({ data }) => {
             dispatch(setProduct(data.product[0]));
         })
@@ -50,5 +50,12 @@ export const isSurvey = (survey) =>{
     return{
         type: actionTypes.IS_SURVEY,
         payload: survey
+    }
+}
+
+export const pageType = (page) =>{
+    return{
+        type: actionTypes.PAGE_TYPE,
+        payload: page
     }
 }

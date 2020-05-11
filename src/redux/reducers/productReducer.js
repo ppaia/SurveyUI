@@ -66,6 +66,13 @@ const isSurvey = (state, action) => {
     }
 }
 
+const pageType = (state, action) => {
+    return {
+        ...state,
+        pageType: action.payload
+    }
+}
+
 export default (state = {}, action) => {
     switch (action.type) {
         case actionTypes.SET_PRODUCTID:
@@ -82,6 +89,8 @@ export default (state = {}, action) => {
             return expandSize(state, action);
         case actionTypes.IS_SURVEY:
             return isSurvey(state, action);
+        case actionTypes.PAGE_TYPE:
+            return pageType(state, action);
         default:
             return state
     }
