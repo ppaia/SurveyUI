@@ -5,6 +5,7 @@ import Customer from './Customer';
 import SurveyComplete from './SurveyComplete';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/action/index';
+import NoQuest from './NoQuest';
 
 class Survey extends Component {
     messagesEnd;
@@ -18,11 +19,14 @@ class Survey extends Component {
             count: 0,
             surveyId: 0,
             comments: '',
-            surveyComplete: false
+            surveyComplete: false,
+            dislike: false
         }
+
+        this.handleQuestClick = this.handleQuestClick.bind(this);
     }
     componentDidMount() {
-        axios.get('http://afe1fadd.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
+        axios.get('http://a1674137.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
             .then(res => {
                 const survey = res.data;
                 this.setState({ survey });
@@ -48,9 +52,26 @@ class Survey extends Component {
             quizId: this.state.survey[this.state.count].id,
             answer: e.target.value
         }
+        if (this.state.survey[this.state.count].id === 5 && e.target.value === 'No') {
+            this.setState({ dislike: !this.state.dislike })
+        }
+        if (e.target.value === 'Yes') {
+            this.setState({ count: this.state.count + 1 });
+        } else {
+            if (this.state.survey[this.state.count].id !== 5) {
+                this.setState({ count: this.state.count + 1 });
+            }
+        }
+
         this.setState({ answers: [...this.state.answers, ansObj] })
         this.setState({ respSurvey: [...this.state.respSurvey, respObj] })
+        this.renderCard(this.state.survey);
+    }
+
+    handleQuestClick(respObj) {
         this.setState({ count: this.state.count + 1 });
+        this.setState({ dislike: !this.state.dislike })
+        this.setState({ respSurvey: [...this.state.respSurvey, respObj] })
         this.renderCard(this.state.survey);
     }
 
@@ -64,7 +85,7 @@ class Survey extends Component {
             pincode: customer.pincode
         };
 
-        const result = await axios.post(`http://afe1fadd.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
+        const result = await axios.post(`http://a1674137.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
         const res = await result.data;
         this.setState({ surveyId: res.surveyId })
         this.setState({ isCustomer: !this.state.isCustomer })
@@ -76,7 +97,7 @@ class Survey extends Component {
             surveyId: this.state.surveyId,
             answers: this.state.answers
         }
-        const result = await axios.post(`http://afe1fadd.ngrok.io/rest/chatbot/survey/save `, survey);
+        const result = await axios.post(`http://a1674137.ngrok.io/rest/chatbot/survey/save `, survey);
         this.setState({ surveyComplete: !this.state.surveyComplete })
     }
 
@@ -112,12 +133,12 @@ class Survey extends Component {
                         }
                         <div className="d-flex justify-content-end mb-5">
                             {
-                                (survey.option === 'Yes' || survey.option === 'No') ?
-                                    <button className={`btn-oval ${survey.option === 'Yes' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Yes' ? 'Yes' : 'No'}</button>
-                                    :
+                                this.state.comments !== '' && survey.id === 16 ?
                                     <div className="user_msg_container">
                                         {this.state.comments}
                                     </div>
+                                    :
+                                    <button className={`btn-oval ${survey.option === 'No' ? 'bt-no' : 'bt-yes'}`}>{survey.option}</button>
                             }
 
                             <div className="img_cont_msg">
@@ -171,11 +192,13 @@ class Survey extends Component {
                     this.renderRespSurvey()
                 }
                 {
-                    this.state.respSurvey.length < this.state.survey.length &&
-                    this.renderQuestions(survey)
+                    this.state.count < this.state.survey.length &&
+                    <>
+                        {this.state.dislike ? <NoQuest handleQuestClick={this.handleQuestClick} /> : this.renderQuestions(survey)}
+                    </>
                 }
                 {
-                    this.state.respSurvey.length === this.state.survey.length &&
+                    this.state.count === this.state.survey.length &&
                     <button type="submit" className="btn-submit-enable"
                         onClick={e => this._handleSubmit(e)}>Submit</button>
                 }
