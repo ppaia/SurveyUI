@@ -164,6 +164,16 @@ tr:nth-child(even) {
   color: #343a40;
 }
 
+.surbey_table th {
+  padding: 1rem;
+}
+
+.surbey_table td {
+  padding: 0.625rem;
+  padding-bottom: 0.625rem;
+  vertical-align: middle;
+}
+
 /* 
 --blue: #007bff;
 --indigo: #6610f2;
@@ -243,11 +253,25 @@ tr:nth-child(even) {
 .bars_loader svg {
   margin: 0;
   position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
+  top: 45%;
   transform: translateY(-50%);
+  left: calc(50% - 25px);
 }
 
 .pad_0_4rem {
   padding: 0 4rem;
+}
+
+ul.qas_ul {
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+}
+ul.qas_ul li {
+  padding: 5px 10px;
+  border: 1px solid #dddddd;
+}
+
+.popup_loader {
+  width: 100%;
 }

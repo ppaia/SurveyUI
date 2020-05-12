@@ -7,13 +7,15 @@ class SearchCountGraph extends Component {
         super(props);
         this.state = {
             errors: [],
-            graphData: []
+            graphData: [],
+            qid: this.props.qid,
+            title: "QA Graph"
         };
     }
 
     fetchGraphsData() {
         // Where we're fetching data from
-        fetch(process.env.REACT_APP_URL + `rest/chatbot/survey/getSurveyCountByQuestion/7`)
+        fetch(process.env.REACT_APP_URL + `rest/chatbot/survey/getSurveyCountByQuestion/` + this.state.qid)
             // We get the API response and receive data in JSON format...
             .then((response) => response.json())
             // ...then we update the users state
@@ -30,6 +32,7 @@ class SearchCountGraph extends Component {
                 this.setState({
                     graphData: requiredData,
                     isLoading: false,
+                    title: data.question
                 })
             })
             // Catch any errors we hit and update the app
@@ -56,7 +59,7 @@ class SearchCountGraph extends Component {
                 />}
                 data={(this.state.graphData.length) ? this.state.graphData : ""}
                 options={{
-                    title: 'Did you find the product you were searching for?',
+                    title: this.state.title,
                     // Just add this option
                     is3D: true,
                     fontSize: 16,

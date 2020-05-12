@@ -38,6 +38,14 @@ class RootComponent extends Component {
       );
     }
 
+    let qaArray = [5, 6, 7, 15];
+    let QaGraphs = "";
+    if (qaArray.length) {
+      QaGraphs = qaArray.map(qid => {
+        return (<SearchCountGraph key={qid} qid={qid} />);
+      })
+    }
+
 
     return (
       <div className="container-fluid pad_0_4rem mb-5">
@@ -56,13 +64,11 @@ class RootComponent extends Component {
           <div className={"chart-container chart_sizes"}>
             <AgeGraph />
             <SurveyGraph />
-          </div>
-          <div className={"chart-container chart_sizes"}>
             <GenderGraph />
-            <SearchCountGraph />
+            <PincodeGraph />
           </div>
           <div className={"chart-container chart_sizes"}>
-            <PincodeGraph />
+            {QaGraphs}
           </div>
         </div>
         {surveys}
