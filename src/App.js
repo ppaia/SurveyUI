@@ -11,6 +11,7 @@ import { faSearch, faUser, faCaretDown, faAngleDown, faAngleUp } from '@fortawes
 import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import Survey from './components/Survey';
+import ProductList from './components/ProductList'
 import RootComponent from "./components/Graphs/RootComponent";
 library.add(faSearch, faUser, faCaretDown, faAngleDown, faAngleUp);
 
@@ -52,25 +53,30 @@ class App extends Component {
         <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} handlerPageSwitch={this.handlePage} />
         {
           pData && pData.pageType === 'admin' ?
-            <>
-              <RootComponent />
-            </>
-            :
-            <>
-              {
-                pData && pData.pageType === 'pdp' &&
-                <>
-                  {(pData && pData.productData) ?
-                    <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
-                      expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
-                    /> : <Spinner />}
-                  <ImageSlider />
-                  {
-                    pData.isSurvey && <Survey />
-                  }
-                </>
-              }
-            </>
+          <>
+          <RootComponent />
+          </>
+          :
+          <>
+          {
+          pData && pData.pageType &&
+          <>
+          {(pData && pData.productData) ?
+          <>
+          {pData.pageType === 'pdp' && <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
+          expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
+          />}
+          {pData.pageType === 'plp' && <ProductList />}
+          </>
+          : <Spinner />}
+          <ImageSlider />
+          {
+          pData.isSurvey && <Survey />
+          }
+          {}
+          </>
+          }
+        </>
         }
         <Footer />
       </div>

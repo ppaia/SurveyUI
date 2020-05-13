@@ -26,7 +26,7 @@ class Survey extends Component {
         this.handleQuestClick = this.handleQuestClick.bind(this);
     }
     componentDidMount() {
-        axios.get('http://a1674137.ngrok.io/rest/chatbot/survey/pdp/getsurvey')
+        axios.get(process.env.REACT_APP_URL + 'rest/chatbot/survey/pdp/getsurvey')
             .then(res => {
                 const survey = res.data;
                 this.setState({ survey });
@@ -85,7 +85,7 @@ class Survey extends Component {
             pincode: customer.pincode
         };
 
-        const result = await axios.post(`http://a1674137.ngrok.io/rest/chatbot/survey/loadsurveydata `, user);
+        const result = await axios.post( process.env.REACT_APP_URL + `rest/chatbot/survey/loadsurveydata `, user);
         const res = await result.data;
         this.setState({ surveyId: res.surveyId })
         this.setState({ isCustomer: !this.state.isCustomer })
@@ -97,7 +97,7 @@ class Survey extends Component {
             surveyId: this.state.surveyId,
             answers: this.state.answers
         }
-        const result = await axios.post(`http://a1674137.ngrok.io/rest/chatbot/survey/save `, survey);
+        const result = await axios.post(process.env.REACT_APP_URL + `rest/chatbot/survey/save `, survey);
         this.setState({ surveyComplete: !this.state.surveyComplete })
     }
 
