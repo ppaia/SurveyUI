@@ -53,30 +53,29 @@ class App extends Component {
         <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} handlerPageSwitch={this.handlePage} />
         {
           pData && pData.pageType === 'admin' ?
-          <>
-          <RootComponent />
-          </>
-          :
-          <>
-          {
-          pData && pData.pageType &&
-          <>
-          {(pData && pData.productData) ?
-          <>
-          {pData.pageType === 'pdp' && <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
-          expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
-          />}
-          {pData.pageType === 'plp' && <ProductList />}
-          </>
-          : <Spinner />}
-          <ImageSlider />
-          {
-          pData.isSurvey && <Survey />
-          }
-          {}
-          </>
-          }
-        </>
+            <>
+              <RootComponent />
+            </>
+            :
+            <>
+              {
+                pData && pData.pageType &&
+                <>
+                  {(pData && pData.productData) ?
+                    <>
+                      {pData.pageType === 'pdp' && <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
+                        expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
+                      />}
+                      {pData.pageType === 'plp' && pData.isSurvey && <ProductList />}
+                    </>
+                    : <Spinner />}
+                  <ImageSlider />
+                  {
+                    pData.isSurvey && pData.pageType === 'pdp' && <Survey />
+                  }
+                </>
+              }
+            </>
         }
         <Footer />
       </div>
