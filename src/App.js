@@ -11,8 +11,10 @@ import { faSearch, faUser, faCaretDown, faAngleDown, faAngleUp } from '@fortawes
 import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import Survey from './components/Survey';
-import ProductList from './components/ProductList'
+import ProductList from './components/ProductList';
+import Plpwatch from './components/ProductList/Watch';
 import RootComponent from "./components/Graphs/RootComponent";
+
 library.add(faSearch, faUser, faCaretDown, faAngleDown, faAngleUp);
 
 class App extends Component {
@@ -66,13 +68,12 @@ class App extends Component {
                       {pData.pageType === 'pdp' && <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
                         expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
                       />}
+                      {pData.pageType==='plp' && <Plpwatch />}
                       {pData.pageType === 'plp' && pData.isSurvey && <ProductList />}
+                      {pData.pageType === 'pdp' && pData.isSurvey && <Survey />}
                     </>
                     : <Spinner />}
                   <ImageSlider />
-                  {
-                    pData.isSurvey && pData.pageType === 'pdp' && <Survey />
-                  }
                 </>
               }
             </>

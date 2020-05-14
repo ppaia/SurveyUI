@@ -57,7 +57,7 @@ class ProductList extends React.Component {
         
         this.setState({ count: this.state.count + 1 });
         if(e.target.value == 'None of the above'){
-            console.log('None of the above========>',this.state.respSurvey);
+           // console.log('None of the above========>',this.state.respSurvey);
             let customQuestion = [{id: 0, question: "Which brand do you like?/Enter the brand you like:", option: "Puma"}];
             this.setState({ answers: [...this.state.answers, ansObj] })
             this.setState({ respSurvey: [...this.state.respSurvey, ...customQuestion] })
@@ -123,11 +123,12 @@ class ProductList extends React.Component {
                         </div>
                         {
                             (survey.option === 'Y' || survey.option === 'N') &&
-                            <div className="d-flex justify-content-center mb-2">
+                            <div className="d-flex justify-content-center mb-2 ">
                                 <button className="btn-oval bt-yes">Yes</button>
                                 <button className="btn-oval bt-no">No</button>
                             </div>
                         }
+                         <img src={require('../../images/user.png')} class="rounded-circle user_img_msg img_cont_msg-plp  " />
                         <div className="d-flex justify-content-end mb-2">
                             {
                                 (survey.option === 'Y' || survey.option === 'N') ?
@@ -136,7 +137,7 @@ class ProductList extends React.Component {
                             }
 
                             <div className="img_cont_msg">
-                                <img src={require('../../images/user.png')} class="rounded-circle user_img_msg" />
+                               
                             </div>
                         </div>
                     </div >
@@ -189,9 +190,9 @@ class ProductList extends React.Component {
     }
 
     renderQuestions(survey) {
-        console.log("survey[this.state.count].============>", survey[this.state.count].option);
+       // console.log("survey[this.state.count].============>", survey[this.state.count].option);
         let optionsdata = survey[this.state.count].option.split("/");
-        console.log("optionsdataoptionsdataoptionsdata===>", optionsdata[0]);
+        //console.log("optionsdataoptionsdataoptionsdata===>", optionsdata[0]);
         let firstQuestion = survey[this.state.count].question.split("/");
         return (
             <>
@@ -258,7 +259,9 @@ class ProductList extends React.Component {
 
     render() {
         return (
-            <div class="container">
+            <div class="container plpDemo">
+                
+            
                 <div class="row justify-content-end chat">
                     <div class="card">
                         <div class="card-header msg_head">
@@ -266,10 +269,10 @@ class ProductList extends React.Component {
                                 <div class="img_cont">
                                     <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" class="rounded-circle user_img" />
                                     {/* <img src={require('../images/chatbot-macys.png')} class="rounded-circle user_img" /> */}
-                                    <span class="online_icon"></span>
+                                 
                                 </div>
                                 <div class="user_info">
-                                    <span>Macy's Virtual Agent</span>
+                                    <span>Macy's Feedback Form </span>
                                 </div>
                             </div>
                         </div>

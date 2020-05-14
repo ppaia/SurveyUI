@@ -1,13 +1,27 @@
 .btn-style{
-    padding: 5px;
-    margin:10px;
-    display: block;
-    width:100%;
-    font-weight: bold;
-    background-color: #e01a2b;
-    color: #fff;
+  padding: 5px;
+  margin:10px;
+  display: block;
+  width:100%;
+  font-weight: bold;
+  background-color: #e01a2b;
+  color: #fff;
 }
 .img_cont_msg-plp
 {
-  width: 60px;
+width: 60px;
+}
+.plpDemo  .list{
+float:left;
+margin-right:60px;
+}
+.plpDemo  .listBlock{
+display:table;
+list-style: none;
+margin-bottom:80px;
+margin-top:50px;
+}
+.plpDemo .list img{
+height: 20rem;
+width:18rem;
 }

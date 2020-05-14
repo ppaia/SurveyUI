@@ -215,7 +215,7 @@ class Survey extends Component {
                             <div className="d-flex bd-highlight">
                                 <div className="img_cont">
                                     <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" className="rounded-circle user_img" />
-                                    <span className="online_icon"></span>
+                                    
                                 </div>
                                 <div className="user_info">
                                     <span>Macy's Survey</span>
