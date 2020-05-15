@@ -12,6 +12,7 @@ import Spinner from './components/Spinner/Spinner';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import Survey from './components/Survey';
 import ProductList from './components/ProductList';
+import Home from './components/Home/home'
 import Plpwatch from './components/ProductList/Watch';
 import RootComponent from "./components/Graphs/RootComponent";
 
@@ -71,6 +72,7 @@ class App extends Component {
                       {pData.pageType==='plp' && <Plpwatch />}
                       {pData.pageType === 'plp' && pData.isSurvey && <ProductList />}
                       {pData.pageType === 'pdp' && pData.isSurvey && <Survey />}
+                      {pData.pageType === 'home' && <Home />}
                     </>
                     : <Spinner />}
                   <ImageSlider />

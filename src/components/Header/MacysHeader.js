@@ -80,6 +80,7 @@ class MacysHeader extends Component {
                                         />
                                     </span>
                                 </Nav.Link>
+                                <Nav.Link href="#" value="home" onClick={this.switchPage} className={classes.OrderTracking}>Home</Nav.Link>
                                 <Nav.Link href="#" value="pdp" onClick={this.switchPage} className={classes.OrderTracking}>PDP</Nav.Link>
                                 <Nav.Link href="#" value="plp" onClick={this.switchPage} className={classes.OrderTracking}>PLP</Nav.Link>
                                 <Nav.Link href="#" value="admin" onClick={this.switchPage} className={classes.OrderTracking}>ADMIN</Nav.Link>
