@@ -1,0 +1,25 @@
+#mySidenav #about {
+    position: absolute;
+    left: -80px;
+    margin-top: 500px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #mySidenav #about:hover {
+    left: 0;
+  }
+  
+  #about {
+    top: 20px;
+    background-color: red;
+  }
+
+  .feedbacktxt{
+    writing-mode: vertical-lr;
+  }
