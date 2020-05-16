@@ -36,7 +36,9 @@ class Surveys extends Component {
                 })
             })
             // Catch any errors we hit and update the app
-            .catch((error) => this.setState({ error, isLoading: false }));
+            .catch((errors) => {
+                this.setState({ errors, isLoading: false })
+            });
     }
 
     componentDidMount() {
@@ -44,6 +46,8 @@ class Surveys extends Component {
     }
 
     render() {
+
+        const errorsElement = (this.state.errors) ? <div className="alert alert-danger">{this.state.errors.toString()}</div> : "";
 
         let tableData = this.state.tableData.map((item, index) => {
             return (<tr key={index} className="bg-light text-dark">
@@ -82,14 +86,22 @@ class Surveys extends Component {
             finalTable = "No Data!";
         }
 
-        return (
-            <div className="container-fluid">
-                <h2 className="mt-3 title_head">Surveys</h2>
-                <div className="row mt-5">
-                    <div className="col">
-                        {finalTable}
-                    </div>
+        const tableContainer = "";
+        if (!this.state.errors) {
+            tableContainer = <div className="row mt-5">
+                <div className="col">
+                    {finalTable}
                 </div>
+            </div>;
+        }
+
+        return (
+            <div>
+                <h2 className="mt-3 title_head">Surveys</h2>
+                <div className="errors">
+                    {errorsElement}
+                </div>
+
                 {this.state.showPopup ? (
                     <Modal
                         surveyId={this.state.surveyId}
