@@ -1,22 +1,42 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import '../Home/home.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Rating from 'react-rating';
 
-const Home = (props) => {
-  const {
-    className
-  } = props;
+class Home extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      modal:false,
+      feedbacktext:"",
+      topic:""
+    }
+  }
 
-  const [modal, setModal] = useState(false);
+  toggle = () => {
+    this.setState({modal:!this.state.modal});
+  }
 
-  const toggle = () => setModal(!modal);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("this state====>222",this.state);
+    alert("submited....");
+  };
 
+  setValue = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+    console.log("[name]: value ====>", [name], value);
+    this.setState({ [name]: value });
+  };
+
+  render(){
   return (
     <div>
-      <Button color="danger" onClick={toggle}>Open Genaric Servay From</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}> <div className="">
+      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.class}>
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <ModalHeader toggle={this.toggle}> <div className="">
           <img src="https://cdn1.austinchamber.com/organizationLogo/organization/logo/3-Macys_Stacked_Thin_190425_204031.jpg?mtime=20190425154032" className="macys_image" />
           <div><b class="feedbackform ">Help us to improve our site!</b></div>
 
@@ -87,7 +107,8 @@ const Home = (props) => {
 
             <div>
               Please select your feedback topic.
-              <select id="feedbac" class="arrows">
+              <select id="feedbac" class="arrows" name ="topic" value={this.state.topic}
+                onChange={(e) => this.setValue(e)}>
                 <option value="defalult"> Please Select Option</option>
                 <option value="order">Order Issue / Status</option>
                 <option value="error">Website Error/Issue</option>
@@ -102,7 +123,8 @@ const Home = (props) => {
             <div classname="d-flex mb-3 mt-2">
               Please tell us about your expirence. What can we improve?
               <br></br>
-              <textarea id="feddback_text" rows="4" cols="50"></textarea>
+              <textarea id="feddback_text" rows="4" cols="50" name = "feedbacktext" value={this.state.feedbacktext}
+                onChange={(e) => this.setValue(e)}/>
             </div>
 
             Your responses will be used in accordance with our privacy policy
@@ -114,12 +136,18 @@ const Home = (props) => {
           <div>
             <img src="https://cdn.dribbble.com/users/226242/screenshots/5606713/camera.png" className="macys_camera" />
           </div>
-          <Button color="secondary" onClick={toggle}>Close</Button>{' '}
-          <Button color="danger" onClick={toggle}>Submit</Button>
+          <Button color="secondary" onClick={this.toggle}>Close</Button>{' '}
+          <Button color="danger" type="submit">Submit</Button>
         </ModalFooter>
+        </form>
       </Modal>
+      <div id="mySidenav" class="sidenav">
+      <Button id="about" color="danger" onClick={this.toggle}><span class="feedbacktxt">Feedback Form</span></Button>
+</div>
     </div>
   );
+}
+    
 }
 
 export default Home;
