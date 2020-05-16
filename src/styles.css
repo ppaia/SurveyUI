@@ -241,7 +241,8 @@
 }
 
 .feedbackform {
-  padding-left: 120px;
+  padding-left: 100px;
+  font-size: 20px;
 }
 
 select {
@@ -271,7 +272,7 @@ select.arrows:focus {
 }
 
 .macys_image {
-  margin-left: 180px;
+  margin-left: 12.5rem;
   width: 50px;
   height: 50px;
 }
@@ -284,6 +285,7 @@ select.arrows:focus {
 
 .spn {
   color: red;
+  font-size: 30px;
 }
 
 .medium {
@@ -296,6 +298,9 @@ select.arrows:focus {
 }
 
 .space_stars {
-  margin-left: 1.2rem;
-  margin-right: 1.2rem;
+  margin-left: 3.4rem;
+}
+
+.space_stars_prod {
+  margin-left: 1rem;
 }

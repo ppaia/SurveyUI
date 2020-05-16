@@ -18,31 +18,29 @@ const Home = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}> <div className="">
           <img src="https://cdn1.austinchamber.com/organizationLogo/organization/logo/3-Macys_Stacked_Thin_190425_204031.jpg?mtime=20190425154032" className="macys_image" />
-        </div></ModalHeader>
+          <div><b class="feedbackform ">Help us to improve our site!</b></div>
+
+        </div> </ModalHeader>
         <ModalBody>
           <div>
 
-            <div>
-              <b class="feedbackform ">Help us to improve our site!</b> <br></br>
-              <br></br>
-              <b>Overall, how satisfied are you with your Macy's.com experience?</b>
+            <b>Overall, how satisfied are you with your Macy's.com experience?</b>
 
-              <br></br>
+            <br></br>
 
-              <span className="d-flex justify-content-between mb-3 mt-2"><span className="float-left"> Completly dissatisfied</span>
-                <span className="float-right">Completly dissatisfied</span></span>
+            <span className="d-flex justify-content-between mb-3 mt-4"><span className="float-left"> Completly Dissatisfied</span>
+              <span className="float-right">Completly Satisfied</span></span>
 
-              <Rating
-                stop={6}
-                emptySymbol={['fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars',
-                  'fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars',
-                  'fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars']}
-                fullSymbol={['fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars',
-                  'fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars',
-                  'fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars']}
-              />
+            <Rating
+              stop={5}
+              emptySymbol={['fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars',
+                'fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars',
+                'fa fa-star-o fa-2x medium space_stars', 'fa fa-star-o fa-2x medium space_stars']}
+              fullSymbol={['fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars',
+                'fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars',
+                'fa fa-star fa-2x medium space_stars', 'fa fa-star fa-2x medium space_stars']}
+            />
 
-            </div>
             <span className="d-flex mt-4"> How Satisfied you with each of the following? </span>
             <br></br>
 
@@ -50,56 +48,42 @@ const Home = (props) => {
 
             <span className="d-flex justify-content-between mb-3 mt-2"><span className="float-left"> Product Availabality</span>
               <span className="float-right"> <Rating
-                stop={6}
-                emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium']}
-                fullSymbol={['fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium']}
+                stop={5}
+                emptySymbol={['fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod',
+                  'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod',
+                  'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod']}
+                fullSymbol={['fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                  'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                  'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod']}
               /></span></span>
 
+            <div className="d-xl-flex mb-2 mt-1">
+              <span className=""> <span className="">Easiness to navigate/search products<span className="spn">*</span> </span>
+                <span className="float-right"> <Rating
+                  stop={5}
+                  emptySymbol={['fa fa-star-o fa-2x medium medium space_stars_prod', 'fa fa-star-o fa-2x medium medium space_stars_prod',
+                    'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod',
+                    'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod']}
+                  fullSymbol={['fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                    'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                    'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod']}
+                /></span></span>
+            </div>
 
-            <span className="d-flex justify-content-between mb-3 mt-2"><span className="float-left"> Easiness to navigate/search products*</span>
-              <span className="float-right"> <Rating
-                stop={6}
-                emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium']}
-                fullSymbol={['fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium']}
-              /></span></span>
-
-
+            <div className="d-xl-flex mb-2 mt-1">
+              <span className=""><span className="">Easiness to check-out/complete purchase<span className="spn">*</span></span>
+                <span className="float-right"> <Rating
+                  stop={5}
+                  emptySymbol={['fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod',
+                    'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod',
+                    'fa fa-star-o fa-2x medium space_stars_prod', 'fa fa-star-o fa-2x medium space_stars_prod']}
+                  fullSymbol={['fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                    'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod',
+                    'fa fa-star fa-2x medium space_stars_prod', 'fa fa-star fa-2x medium space_stars_prod']}
+                /></span></span>
+            </div>
 
             <br></br>
-
-            <Rating
-              stop={6}
-              emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium']}
-              fullSymbol={['fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium']}
-            />
-
-            <br></br>
-
-            <span> Easiness to check-out/complete Purchase* </span>
-
-            <Rating
-              stop={6}
-              emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
-                'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium']}
-              fullSymbol={['fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
-                'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium']}
-            />
-            <br></br>
-
 
             <div>
               Please select your feedback topic.
@@ -115,16 +99,13 @@ const Home = (props) => {
               </select>
             </div>
             <br></br>
-            <br></br>
-            <div>
-              Please Tell us about your expirence. What can we imporve?
+            <div classname="d-flex mb-3 mt-2">
+              Please tell us about your expirence. What can we improve?
               <br></br>
               <textarea id="feddback_text" rows="4" cols="50"></textarea>
             </div>
 
-            Your responses will be used in accordance wiht our <span class="spn">privacy policy</span>
-
-
+            Your responses will be used in accordance with our privacy policy
 
 
           </div>
