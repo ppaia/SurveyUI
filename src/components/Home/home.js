@@ -43,7 +43,7 @@ const Home = (props) => {
               />
 
             </div>
-            <span className="d-flex mt-3"> How Satisfied you with each of the following? </span>
+            <span className="d-flex mt-4"> How Satisfied you with each of the following? </span>
             <br></br>
 
 
@@ -60,12 +60,21 @@ const Home = (props) => {
               /></span></span>
 
 
-
+            <span className="d-flex justify-content-between mb-3 mt-2"><span className="float-left"> Easiness to navigate/search products*</span>
+              <span className="float-right"> <Rating
+                stop={6}
+                emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
+                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
+                  'fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium']}
+                fullSymbol={['fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
+                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium',
+                  'fa fa-star fa-2x medium', 'fa fa-star fa-2x medium']}
+              /></span></span>
 
 
 
             <br></br>
-            Easiness to navigate/search products*
+
             <Rating
               stop={6}
               emptySymbol={['fa fa-star-o fa-2x medium', 'fa fa-star-o fa-2x medium',
