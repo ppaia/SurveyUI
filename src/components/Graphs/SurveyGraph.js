@@ -10,7 +10,7 @@ class SurveyGraph extends Component {
             graphData: []
         };
     }
-    
+
     fetchGraphsData() {
         // Where we're fetching data from
         fetch(process.env.REACT_APP_URL + `rest/chatbot/survey/SurveyCount`)
@@ -18,7 +18,7 @@ class SurveyGraph extends Component {
             .then((response) => response.json())
             // ...then we update the users state
             .then((data) => {
-    
+
                 let requiredData = [
                     ['Surveys', 'Count']
                 ];
@@ -33,7 +33,9 @@ class SurveyGraph extends Component {
                 })
             })
             // Catch any errors we hit and update the app
-            .catch((error) => this.setState({ error, isLoading: false }));
+            .catch((errors) => {
+                this.setState({ errors, isLoading: false })
+            });
     }
 
     componentDidMount() {
@@ -41,8 +43,10 @@ class SurveyGraph extends Component {
     }
 
     render() {
-        return (
-            <Chart
+        const errorsElement = (this.state.errors) ? <div className="alert alert-danger">{this.state.errors.toString()}</div> : "";
+        const graphElement = "";
+        if (this.state.graphData.length) {
+            graphElement = <Chart
                 width={'500px'}
                 height={'300px'}
                 chartType="PieChart"
@@ -84,7 +88,15 @@ class SurveyGraph extends Component {
                     }
                 }}
                 rootProps={{ 'data-testid': '2' }}
-            />
+            />;
+        }
+        return (
+            <div>
+                <div className="errors m-3">
+                    {errorsElement}
+                </div>
+                {graphElement}
+            </div>
         );
     }
 }
