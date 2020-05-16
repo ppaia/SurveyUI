@@ -53,7 +53,7 @@ class Color extends Component {
                 {/*  style={{ backgroundImage: `url(${this.props.urlTemplate.swatch}${this.props.colorsArray[color].swatchImage.filePath})` }}*/}
                 <Collapse in={true}>
                     <span className={classes.colorsList}>{Object.keys(this.props.colorsArray).slice(0, 9).map((color, index) => (
-                        <span key={index} className={color == this.props.SelectedColor.id ? classes.ActiveClass : classes.InActiveClass}>
+                        <span key={index} className={color === this.props.SelectedColor.id ? classes.ActiveClass : classes.InActiveClass}>
                             <Image
                                 className={[classes.ColorIcon]}
                                 src={'https://slimages.macysassets.com/is/image/MCY/products/' + this.props.colorsArray[color].swatchImage.filePath}
@@ -65,7 +65,7 @@ class Color extends Component {
                 </Collapse>
                 <Collapse in={this.props.expandColor}>
                     <span className={classes.colorsList}>{Object.keys(this.props.colorsArray).slice(9, Object.keys(this.props.colorsArray).length).map((color, index) => (
-                        <span key={index} className={color == this.props.SelectedColor.id ? classes.ActiveClass : classes.InActiveClass}>
+                        <span key={index} className={color === this.props.SelectedColor.id ? classes.ActiveClass : classes.InActiveClass}>
                             <Image
                                 className={[classes.ColorIcon]}
                                 src={'https://slimages.macysassets.com/is/image/MCY/products/' + this.props.colorsArray[color].swatchImage.filePath}
