@@ -1,13 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Customer from '../Survey/Customer';
-import classes from './ProductList.css';
-import { Breadcrumb, Button, ButtonGroup } from 'react-bootstrap';
-import StarRatingComponent from 'react-star-rating-component';
-import ImageCarousel from '../ImageCarousel/ImageCarousel';
-import Size from '../Size/Size';
-import Color from '../Color/Color';
-import Accordion from '../product-accordion/accordion';
 import { Form } from 'react-bootstrap';
 //import Customer from './Customer';
 class ProductList extends React.Component {
@@ -56,7 +49,7 @@ class ProductList extends React.Component {
         }
         
         this.setState({ count: this.state.count + 1 });
-        if(e.target.value == 'None of the above'){
+        if(e.target.value === 'None of the above'){
            // console.log('None of the above========>',this.state.respSurvey);
             let customQuestion = [{id: 0, question: "Which brand do you like?/Enter the brand you like:", option: "Puma"}];
             this.setState({ answers: [...this.state.answers, ansObj] })
@@ -99,7 +92,7 @@ class ProductList extends React.Component {
 
     _handleChange = e => {
         e.preventDefault();
-        if(this.state.showNoneoftheabove == true){
+        if(this.state.showNoneoftheabove === true){
             this.setState({ customeQuestion: e.target.value })
         }else{
             this.setState({ comments: e.target.value })
@@ -128,7 +121,7 @@ class ProductList extends React.Component {
                                 <button className="btn-oval bt-no">No</button>
                             </div>
                         }
-                         <img src={require('../../images/user.png')} class="rounded-circle user_img_msg img_cont_msg-plp  " />
+                         <img src={require('../../images/user.png')} className="rounded-circle user_img_msg img_cont_msg-plp  " />
                         <div className="d-flex justify-content-end mb-2">
                             {
                                 (survey.option === 'Y' || survey.option === 'N') ?
@@ -172,7 +165,7 @@ class ProductList extends React.Component {
                             </div>
                         }
                         <div className="justify-content-end mb-2">
-                        <img src={require('../../images/user.png')} class="rounded-circle user_img_msg" />
+                        <img src={require('../../images/user.png')} className="rounded-circle user_img_msg" />
                             {
                                 (survey.option === 'Yes' || survey.option === 'No') ?
                                     <button className={`btn-oval ${survey.option === 'Yes' ? 'bt-yes' : 'bt-no'}`}>{survey.option === 'Yes' ? 'Yes' : 'No'}</button>
@@ -203,16 +196,16 @@ class ProductList extends React.Component {
                     <div className="msg_container">
                         {
                             
-                            (this.state.showNoneoftheabove == true)?'Please suggest us which color do you like?':survey.length > 0 && survey[this.state.count].question
+                            (this.state.showNoneoftheabove === true)?'Please suggest us which color do you like?':survey.length > 0 && survey[this.state.count].question
                         }
                     </div>
                 </div>
                 {
                     
-                    (optionsdata[0] === 'Comments' || this.state.showNoneoftheabove == true) ?
+                    (optionsdata[0] === 'Comments' || this.state.showNoneoftheabove === true) ?
                         <div className="d-flex justify-content-center mb-2">
                             <Form.Group controlId="exampleForm.ControlTextarea1" onBlur={e => this._handleClick(e)}>
-                                <Form.Control as="textarea" rows="3" columns="10" value={(this.state.showNoneoftheabove == true)?this.state.customeQuestion:this.state.comments} onChange={e => this._handleChange(e)} />
+                                <Form.Control as="textarea" rows="3" columns="10" value={(this.state.showNoneoftheabove === true)?this.state.customeQuestion:this.state.comments} onChange={e => this._handleChange(e)} />
                             </Form.Group>
                            
                             
@@ -259,19 +252,19 @@ class ProductList extends React.Component {
 
     render() {
         return (
-            <div class="container plpDemo">
+            <div className="container plpDemo">
                 
             
-                <div class="row justify-content-end chat">
-                    <div class="card">
-                        <div class="card-header msg_head">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" class="rounded-circle user_img" />
-                                    {/* <img src={require('../images/chatbot-macys.png')} class="rounded-circle user_img" /> */}
+                <div className="row justify-content-end chat">
+                    <div className="card">
+                        <div className="card-header msg_head">
+                            <div className="d-flex bd-highlight">
+                                <div className="img_cont">
+                                    <img src="https://www.virtualagent-macys.com/Client/images/icon-ui-macys-f-red.svg" className="rounded-circle user_img" />
+                                    {/* <img src={require('../images/chatbot-macys.png')} className="rounded-circle user_img" /> */}
                                  
                                 </div>
-                                <div class="user_info">
+                                <div className="user_info">
                                     <span>Macy's Feedback Form </span>
                                 </div>
                             </div>
