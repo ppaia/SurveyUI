@@ -53,34 +53,7 @@ class App extends Component {
     const { pData } = this.props;
     return (
       <div>
-        <MacysHeader handlerFromParent={this.handleData} handlerForSurvey={this.handleSurvey} handlerPageSwitch={this.handlePage} />
-        {
-          pData && pData.pageType === 'admin' ?
-            <>
-              <RootComponent />
-            </>
-            :
-            <>
-              {
-                pData && pData.pageType &&
-                <>
-                  {(pData && pData.productData) ?
-                    <>
-                      {pData.pageType === 'pdp' && <ProductPage product={pData.productData} onColorsLoad={this.props.loadColors} onSetColorName={this.props.setColorName} expandColor={pData.expandColor}
-                        expandColorFn={this.props.expandColor} expandSize={pData.expandSize} expandSizeFn={this.props.expandSize}
-                      />}
-                      {pData.pageType==='plp' && <Plpwatch />}
-                      {pData.pageType === 'plp' && pData.isSurvey && <ProductList />}
-                      {pData.pageType === 'pdp' && pData.isSurvey && <Survey />}
-                      {pData.pageType === 'home' && <Home />}
-                    </>
-                    : <Spinner />}
-                  <ImageSlider />
-                </>
-              }
-            </>
-        }
-        <Footer />
+        <Home />
       </div>
     );
   }

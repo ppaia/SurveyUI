@@ -23,3 +23,13 @@
   .feedbacktxt{
     writing-mode: vertical-lr;
   }
+
+  .pageimg{
+    width: 106rem;
+    height: 51rem;
+  }
+
+  .pagfooterpng{
+    width: 110rem;
+    height: 18rem;
+  }

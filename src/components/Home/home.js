@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../Home/home.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Rating from 'react-rating';
+import ScreenCapture from './SceenCapture'
+import homepage from '../../assets/images/currentpage.png'
+import footerpng from '../../assets/images/footer.png'
+import './style.css';
 
 class Home extends Component {
   constructor(props){
@@ -9,12 +13,28 @@ class Home extends Component {
     this.state = {
       modal:false,
       feedbacktext:"",
-      topic:""
+      topic:"",
+      name: 'GAMO',
+      screenCapture: '',
+      isimageadded:false
     }
+  }
+
+  handleScreenCapture = (screenCapture) => {
+    this.setState({
+      screenCapture,
+      modal:!this.state.modal,
+      isimageadded:true
+    })
   }
 
   toggle = () => {
     this.setState({modal:!this.state.modal});
+  }
+
+  manageModel=()=>{
+    this.setState({modal:false});
+    console.log("this state====>managemodel",this.state);
   }
 
   handleSubmit = (event) => {
@@ -32,8 +52,34 @@ class Home extends Component {
   };
 
   render(){
+    const { screenCapture } = this.state
+    console.log("screenCapture=======>",screenCapture);
   return (
+    <ScreenCapture onEndCapture={this.handleScreenCapture}
+    manageModel={this.manageModel}>
+    {({ onStartCapture }) => (
+      <Fragment>
     <div>
+    <img
+    src={homepage}
+    alt="IN"
+    className="pageimg"
+    />
+
+    <img
+    src={footerpng}
+    alt="IN"
+    className="pagfooterpng"
+    />
+    
+    <Fragment>
+            <p>
+              Page..............
+            </p>
+            <br/>
+            <br/>
+            {(screenCapture)?<img src={screenCapture} />:null}
+          </Fragment>
       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.class}>
       <form onSubmit={(e) => this.handleSubmit(e)}>
         <ModalHeader toggle={this.toggle}> <div className="">
@@ -134,7 +180,9 @@ class Home extends Component {
         </ModalBody>
         <ModalFooter>
           <div>
-            <img src="https://cdn.dribbble.com/users/226242/screenshots/5606713/camera.png" className="macys_camera" />
+            <img src="https://cdn.dribbble.com/users/226242/screenshots/5606713/camera.png" 
+            disabled='true'
+            className="macys_camera" onClick={onStartCapture}/>
           </div>
           <Button color="secondary" onClick={this.toggle}>Close</Button>{' '}
           <Button color="danger" type="submit">Submit</Button>
@@ -145,6 +193,9 @@ class Home extends Component {
       <Button id="about" color="danger" onClick={this.toggle}><span class="feedbacktxt">Feedback Form</span></Button>
 </div>
     </div>
+    </Fragment>
+        )}
+      </ScreenCapture>
   );
 }
     
