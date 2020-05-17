@@ -45,7 +45,7 @@ class AgeGraph extends Component {
     render() {
 
         const errorsElement = (this.state.errors) ? <div className="alert alert-danger">{this.state.errors.toString()}</div> : "";
-        const graphElement = "";
+        let graphElement = "";
         if (this.state.graphData.length) {
             graphElement = <Chart
                 width={'500px'}

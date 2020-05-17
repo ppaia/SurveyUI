@@ -86,7 +86,7 @@ class Surveys extends Component {
             finalTable = "No Data!";
         }
 
-        const tableContainer = "";
+        let tableContainer = "";
         if (!this.state.errors) {
             tableContainer = <div className="row mt-5">
                 <div className="col">
@@ -101,7 +101,7 @@ class Surveys extends Component {
                 <div className="errors">
                     {errorsElement}
                 </div>
-
+                {tableContainer}
                 {this.state.showPopup ? (
                     <Modal
                         surveyId={this.state.surveyId}

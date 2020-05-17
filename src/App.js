@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import MacysHeader from "./components/Header/MacysHeader";
 import './App.css';
 import './styles.css';
