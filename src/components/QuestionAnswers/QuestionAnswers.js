@@ -13,7 +13,8 @@ class QuestionAnswers extends Component {
     }],
     showPopup: false,
     subQaId: "",
-    subQasAdded: []
+    subQasAdded: [],
+    messages: []
   }
 
   handleQuestion = (e) => {
@@ -133,7 +134,10 @@ class QuestionAnswers extends Component {
       return false;
     }
 
-    alert("Submitted!");
+    let messages = ["Successfully Submitted!"];
+    this.setState({
+      messages
+    });
   }
 
   render() {
@@ -146,8 +150,14 @@ class QuestionAnswers extends Component {
       </Modal>;
     }
 
+    let messages = "";
+    if (this.state.messages.length) {
+      messages = <div className="row my-3"><div className="col"><span className="alert alert-success">{this.state.messages[0]}</span></div></div>;
+    }
+
     return (
       <Fragment>
+        {messages}
         <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange}>
           <Form.Group>
             <Form.Label>Question</Form.Label>

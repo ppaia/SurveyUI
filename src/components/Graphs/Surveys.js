@@ -58,7 +58,7 @@ class Surveys extends Component {
                 <td>{item.gender}</td>
                 <td>{(item.pincode) ? item.pincode : "000000"}</td>
                 <td>{(item.page) ? item.page : "NA"}</td>
-                <td><Button className="btn btn-light" onClick={() => this.togglePopup(item.surveyId, item.name)}>View QAs</Button></td>
+                <td><Button variant="secondary" onClick={() => this.togglePopup(item.surveyId, item.name)}><i className="fa fa-plus-circle" aria-hidden="true"></i></Button></td>
             </tr>);
         });
 
