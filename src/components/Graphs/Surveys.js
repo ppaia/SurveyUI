@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
+import { Table, Button } from "react-bootstrap";
 import Modal from "./Modal";
 
 class Surveys extends Component {
@@ -47,7 +47,7 @@ class Surveys extends Component {
 
     render() {
 
-        const errorsElement = (this.state.errors) ? <div className="alert alert-danger">{this.state.errors.toString()}</div> : "";
+        const errorsElement = (this.state.errors.length) ? <div className="errors"><div className="alert alert-danger">{this.state.errors.toString()}</div></div> : "";
 
         let tableData = this.state.tableData.map((item, index) => {
             return (<tr key={index} className="bg-light text-dark">
@@ -58,7 +58,7 @@ class Surveys extends Component {
                 <td>{item.gender}</td>
                 <td>{(item.pincode) ? item.pincode : "000000"}</td>
                 <td>{(item.page) ? item.page : "NA"}</td>
-                <td><button className="btn btn-light" onClick={() => this.togglePopup(item.surveyId, item.name)}>View QAs</button></td>
+                <td><Button className="btn btn-light" onClick={() => this.togglePopup(item.surveyId, item.name)}>View QAs</Button></td>
             </tr>);
         });
 
@@ -87,7 +87,7 @@ class Surveys extends Component {
         }
 
         let tableContainer = "";
-        if (!this.state.errors) {
+        if (!this.state.errors.length) {
             tableContainer = <div className="row mt-5">
                 <div className="col">
                     {finalTable}
@@ -98,9 +98,7 @@ class Surveys extends Component {
         return (
             <div>
                 <h2 className="mt-3 title_head">Surveys</h2>
-                <div className="errors">
-                    {errorsElement}
-                </div>
+                {errorsElement}
                 {tableContainer}
                 {this.state.showPopup ? (
                     <Modal

@@ -1,4 +1,8 @@
-.add__button {
+.add__button,
+.sub__button {
     white-space: nowrap;
+}
+
+.add__button {
     margin-left: 1rem;
 }

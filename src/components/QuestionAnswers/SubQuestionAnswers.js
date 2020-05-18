@@ -5,6 +5,7 @@ class SubQuestionAnswers extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            qaId: this.props.subId,
             question: "",
             options: [{
                 optionId: "",
@@ -16,7 +17,7 @@ class SubQuestionAnswers extends Component {
     handleText = i => e => {
         let options = [...this.state.options]
         options[i] = {
-            optionId: (e.target.value) ? "option_" + i : "",
+            optionId: (e.target.value) ? "sub_option_" + i : "",
             optionName: e.target.value
         }
         this.setState({
@@ -46,13 +47,14 @@ class SubQuestionAnswers extends Component {
         let options = this.state.options.concat([{
             optionId: "",
             optionName: ""
-        }])
+        }]);
+
         this.setState({
             options
         })
     }
 
-    handleQuestion = (e) => {
+    handleQuestion = e => {
         e.preventDefault()
         let question = e.target.value;
         this.setState({
@@ -60,9 +62,13 @@ class SubQuestionAnswers extends Component {
         })
     }
 
+    handleChange = e => {
+        e.preventDefault();
+    }
+
     render() {
         return (
-            <Form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+            <Form onSubmit={this.props.mergeSubQas.bind(this, this.state)} onChange={this.handleChange}>
                 <Form.Group>
                     <Form.Label>Question</Form.Label>
                     <div className="d-flex">
@@ -76,7 +82,6 @@ class SubQuestionAnswers extends Component {
                         />
                         <Button className="add__button" variant="secondary" onClick={this.addOptions}><i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>Add option</Button>
                     </div>
-                    <p>{this.state.question}</p>
                     <Fragment>
                         {Object.keys(this.state.options).map((option, index) => (
                             <span key={index}>
@@ -92,11 +97,11 @@ class SubQuestionAnswers extends Component {
                                     />
                                     <Button className="add__button" variant="danger" onClick={this.handleDelete(index)}>X</Button>
                                 </div>
-                                <p>{this.state.options[index].optionName}</p>
                             </span>
                         ))}
                     </Fragment>
                 </Form.Group>
+                <Button className="sub__button" variant="success" type="submit">Add Question</Button>
             </Form>
         );
     }

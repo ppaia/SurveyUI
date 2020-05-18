@@ -12,7 +12,8 @@ class QuestionAnswers extends Component {
       optionName: ""
     }],
     showPopup: false,
-    subQaId: ""
+    subQaId: "",
+    subQasAdded: []
   }
 
   handleQuestion = (e) => {
@@ -78,9 +79,39 @@ class QuestionAnswers extends Component {
       showPopup: !this.state.showPopup
     });
 
-    console.log("subId: ", subId);
     console.log("Question: ", this.state.question);
     console.log("Options: ", this.state.options);
+  }
+
+  mergeSubQas = (qaData, e) => {
+    e.preventDefault();
+    let options = this.state.options;
+    let subQasAdded = this.state.subQasAdded;
+
+    options.map((item, index) => {
+      if (qaData.qaId === item.optionId) {
+        let sub_options = [];
+        qaData.options.map((option, idx) => {
+          if (option.optionName)
+            sub_options.push(option.optionName);
+        });
+        if (qaData.question && sub_options.length) {
+          options[index].options = sub_options;
+          options[index].question = qaData.question;
+          subQasAdded.push(qaData.qaId);
+        } else {
+          alert("Sub question and options must not be blank!");
+          return false;
+        }
+      }
+    });
+
+    this.setState({
+      showPopup: false,
+      options,
+      subQasAdded
+    });
+
   }
 
   togglePopup(e) {
@@ -90,20 +121,34 @@ class QuestionAnswers extends Component {
     });
   }
 
-  render() {
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.state.question) {
+      alert("Question must be there!");
+      return false;
+    }
 
+    if (!this.state.options[0].optionName) {
+      alert("At-least one option must be there!");
+      return false;
+    }
+
+    alert("Submitted!");
+  }
+
+  render() {
     let subqacontainer = "";
     if (this.state.showPopup) {
       subqacontainer = <Modal closePopup={this.togglePopup.bind(this)}>
         <div>
-          <SubQuestionAnswers subId={this.state.subQaId} />
+          <SubQuestionAnswers subId={this.state.subQaId} mergeSubQas={this.mergeSubQas} />
         </div>
       </Modal>;
     }
 
     return (
       <Fragment>
-        <Form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+        <Form onSubmit={this.handleSubmit.bind(this)} onChange={this.handleChange}>
           <Form.Group>
             <Form.Label>Question</Form.Label>
             <div className="d-flex">
@@ -117,7 +162,6 @@ class QuestionAnswers extends Component {
               />
               <Button className="add__button" variant="secondary" onClick={this.addOptions}><i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>Add option</Button>
             </div>
-            <p>{this.state.question}</p>
             <Fragment>
               {Object.keys(this.state.options).map((option, index) => (
                 <span key={index}>
@@ -131,15 +175,25 @@ class QuestionAnswers extends Component {
                       onChange={this.handleText(index)}
                       value={option.optionName}
                     />
-                    <Button className="add__button" variant="danger" onClick={this.handleDelete(index)}>X</Button>
-                    <Button className="add__button" variant="primary" onClick={() => this.addSubQuestion(this.state.options[index].optionId, this.state.options[index].optionName)}>
-                      <i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>
-                      <span>Sub-Question</span>
-                    </Button>
+                    {(this.state.subQasAdded.includes(this.state.options[index].optionId)) ? (
+                      <Button className="add__button" variant="secondary" disabled>
+                        <i className="fa fa-check-circle mr-2" aria-hidden="true"></i>
+                        <span>Added</span>
+                      </Button>
+                    ) : (
+                        <Fragment>
+                          <Button className="add__button" variant="danger" onClick={this.handleDelete(index)}>X</Button>
+                          <Button className="add__button" variant="primary" onClick={() => this.addSubQuestion(this.state.options[index].optionId, this.state.options[index].optionName)}>
+                            <i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>
+                            <span>Sub-Question</span>
+                          </Button>
+                        </Fragment>
+                      )
+                    }
                   </div>
-                  <p>{this.state.options[index].optionName}</p>
                 </span>
               ))}
+              <Button className="sub__button mt-3" variant="success" type="submit">Submit Question</Button>
             </Fragment>
           </Form.Group>
         </Form>

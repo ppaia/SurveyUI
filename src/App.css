@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height        : 40vmin;
   pointer-events: none;
 }
 
@@ -15,13 +15,13 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height      : 100vh;
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
+  justify-content : center;
+  font-size       : calc(10px + 2vmin);
+  color           : white;
 }
 
 .App-link {
@@ -32,50 +32,55 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 .chart-container {
-  flex: 1;
+  flex : 1;
   width: 25%;
 }
 
-.chart_sizes > div {
-  flex: 1;
-  margin: auto;
+.chart_sizes>div {
+  flex      : 1;
+  margin    : auto;
   margin-top: 2rem;
 }
 
+.chartGraphBox>div {
+  margin: auto;
+}
+
 .resultIcons {
-  display: flex;
-  flex-wrap: nowrap;
+  display         : flex;
+  flex-wrap       : nowrap;
   background-color: #ddd;
 }
 
 .title_head {
-  color: green;
-  padding: 1rem 0;
-  flex: 1;
-  background: #fff;
+  color        : green;
+  padding      : 1rem 0;
+  flex         : 1;
+  background   : #fff;
   border-bottom: 1px solid #c8ced3;
   border-radius: 0;
-  display: block;
+  display      : block;
 }
 
 /* tables */
 table {
-  font-family: arial, sans-serif;
+  font-family    : arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width          : 100%;
 }
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border    : 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding   : 8px;
 }
 
 tr:nth-child(even) {
@@ -87,33 +92,37 @@ tr:nth-child(even) {
 }
 
 .alert {
-  color: #721c24;
+  color           : #721c24;
   background-color: #f8d7da;
-  border-color: #f5c6cb;
+  border-color    : #f5c6cb;
 }
 
 .alert-error {
-  position: relative;
-  padding: 0.75rem 1.25rem;
+  position     : relative;
+  padding      : 0.75rem 1.25rem;
   margin-bottom: 1rem;
-  border: 1px solid transparent;
+  border       : 1px solid transparent;
   border-radius: 0.25rem;
-  animation: blinkingText 1.2s infinite;
+  animation    : blinkingText 1.2s infinite;
 }
 
 @keyframes blinkingText {
   0% {
     color: #000;
   }
+
   49% {
     color: #000;
   }
+
   60% {
     color: transparent;
   }
+
   99% {
     color: transparent;
   }
+
   100% {
     color: #000;
   }
@@ -122,46 +131,46 @@ tr:nth-child(even) {
 /* Grid system */
 
 .card {
-  border: 1px solid #bfbfbf;
+  border    : 1px solid #bfbfbf;
   box-shadow: 10px 10px 5px #aaaaaa;
 }
 
 .cards {
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 1rem;
+  margin               : 0 auto;
+  display              : grid;
+  grid-gap             : 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 /* backgrund colors classes */
 .bg-blue {
   background-color: blue;
-  color: white;
+  color           : white;
 }
 
 .bg-dodgerblue {
   background-color: dodgerblue;
-  color: white;
+  color           : white;
 }
 
 .bg-green {
   background-color: green;
-  color: white;
+  color           : white;
 }
 
 .bg-lightgreen {
   background-color: rgb(17, 146, 17);
-  color: white;
+  color           : white;
 }
 
 .bg-dark {
   background-color: #343a40;
-  color: #fff;
+  color           : #fff;
 }
 
 .bg-light {
   background-color: #f8f9fa;
-  color: #343a40;
+  color           : #343a40;
 }
 
 .surbey_table th {
@@ -169,7 +178,7 @@ tr:nth-child(even) {
 }
 
 .surbey_table td {
-  padding: 0.625rem;
+  padding       : 0.625rem;
   padding-bottom: 0.625rem;
   vertical-align: middle;
 }
@@ -201,61 +210,71 @@ tr:nth-child(even) {
 /* popup modal css */
 
 .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  z-index: 1; /* Sit on top */
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  margin          : auto;
+  width           : 100%;
+  /* Full width */
+  height          : 100%;
+  /* Full height */
+  overflow        : auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  z-index         : 1;
+  /* Sit on top */
 }
+
 .popup_inner {
-  position: relative;
+  position        : relative;
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  margin          : 15% auto;
+  /* 15% from the top and centered */
+  border          : 1px solid #888;
+  width           : 80%;
+  /* Could be more or less, depending on screen size */
 }
 
 .close-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  border: none;
+  position     : absolute;
+  right        : 0;
+  top          : 0;
+  border       : none;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  margin: 5px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #aaa;
+  width        : 2rem;
+  height       : 2rem;
+  margin       : 5px;
+  font-size    : 20px;
+  font-weight  : bold;
+  color        : #aaa;
 }
 
 .close-button:hover,
 .close-button:focus {
-  color: black;
+  color          : black;
   text-decoration: none;
-  cursor: pointer;
+  cursor         : pointer;
 }
 
 .bars_loader {
-  position: relative;
+  position  : relative;
   text-align: center;
-  width: 500px;
-  height: 300px;
+  width     : 500px;
+  height    : 300px;
+  margin    : auto;
 }
 
 .bars_loader svg {
-  margin: 0;
-  position: absolute;
-  top: 45%;
+  margin   : 0;
+  position : absolute;
+  top      : 45%;
   transform: translateY(-50%);
-  left: calc(50% - 25px);
+  left     : calc(50% - 25px);
 }
 
 .pad_0_4rem {
@@ -263,15 +282,21 @@ tr:nth-child(even) {
 }
 
 ul.qas_ul {
-  list-style: none;
+  list-style     : none;
   list-style-type: none;
-  padding: 0;
+  padding        : 0;
 }
+
 ul.qas_ul li {
   padding: 5px 10px;
-  border: 1px solid #dddddd;
+  border : 1px solid #dddddd;
 }
 
 .popup_loader {
   width: 100%;
+}
+
+.survey__button {
+  z-index    : 999999;
+  white-space: nowrap;
 }

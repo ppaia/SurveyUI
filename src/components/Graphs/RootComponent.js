@@ -6,6 +6,7 @@ import SearchCountGraph from "./SearchCountGraph";
 import PincodeGraph from "./PincodeGraph";
 import Surveys from "./Surveys";
 import QuestionAnswers from "./../QuestionAnswers/QuestionAnswers";
+import Loader from 'react-loader-spinner';
 
 class RootComponent extends Component {
   constructor(props) {
@@ -13,25 +14,39 @@ class RootComponent extends Component {
     this.state = {
       errors: [],
       toggleSurveys: false,
-      createQas: false
+      toggleCreateQas: false,
+      toggleGraphs: true
     };
   }
 
-  createQas() {
+  toggleCreateQas() {
     this.setState({
-      createQas: !this.state.createQas
+      toggleCreateQas: true,
+      toggleGraphs: false,
+      toggleSurveys: false
+    });
+  }
+
+  toggleGraphs() {
+    this.setState({
+      toggleGraphs: true,
+      toggleSurveys: false,
+      toggleCreateQas: false
     });
   }
 
   toggleSurveys() {
     this.setState({
-      toggleSurveys: !this.state.toggleSurveys
+      toggleSurveys: true,
+      toggleGraphs: false,
+      toggleCreateQas: false
     });
   }
 
   render() {
     let errors = "";
-    if (this.state.errors) {
+    if (this.state.errors.length) {
+      debugger;
       errors = this.state.errors.map((item, index) => (
         <div key={index} className="alert alert-error">
           {item}
@@ -55,21 +70,13 @@ class RootComponent extends Component {
     }
 
     let QaData = "";
-    if (this.state.createQas) {
+    if (this.state.toggleCreateQas) {
       QaData = <QuestionAnswers />;
     }
 
-
-    return (
-      <div className="container-fluid pad_0_4rem mb-5">
-        <div className="row">
-          <div className="col d-flex">
-            <h2 className="mt-3 title_head">Dashboard</h2>
-            <h3 className="mt-3 title_head text-right"><button onClick={this.createQas.bind(this)} className="btn btn-light">Create QAs</button></h3>
-            <h3 className="mt-3 title_head text-right"><button onClick={this.toggleSurveys.bind(this)} className="btn btn-light">Show Surveys</button></h3>
-          </div>
-        </div>
-        {QaData}
+    let SurveyGraphsElement = "";
+    if (this.state.toggleGraphs) {
+      SurveyGraphsElement = <div>
         <div className="row">
           <div className="col">
             {errors}
@@ -86,6 +93,24 @@ class RootComponent extends Component {
             {QaGraphs}
           </div>
         </div>
+      </div>;
+    }
+
+
+    return (
+      <div className="container-fluid pad_0_4rem mb-5">
+        <div className="row">
+          <div className="col d-flex">
+            <h2 className="mt-3 title_head">Dashboard</h2>
+            <h3 className="mt-3 title_head text-right">
+              <button onClick={this.toggleGraphs.bind(this)} className="btn btn-light mr-2">Graphs</button>
+              <button onClick={this.toggleCreateQas.bind(this)} className="btn btn-light mr-2">Create QAs</button>
+              <button onClick={this.toggleSurveys.bind(this)} className="btn btn-light">Show Surveys</button>
+            </h3>
+          </div>
+        </div>
+        {QaData}
+        {SurveyGraphsElement}
         {surveys}
       </div>
     );

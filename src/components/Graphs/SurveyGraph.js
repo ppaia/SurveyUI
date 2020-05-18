@@ -43,7 +43,7 @@ class SurveyGraph extends Component {
     }
 
     render() {
-        const errorsElement = (this.state.errors) ? <div className="alert alert-danger">{this.state.errors.toString()}</div> : "";
+        const errorsElement = (this.state.errors.length) ? <div className="errors m-3"><div className="alert alert-danger">{this.state.errors.toString()}</div></div> : "";
         let graphElement = "";
         if (this.state.graphData.length) {
             graphElement = <Chart
@@ -91,10 +91,8 @@ class SurveyGraph extends Component {
             />;
         }
         return (
-            <div>
-                <div className="errors m-3">
-                    {errorsElement}
-                </div>
+            <div className="chartGraphBox">
+                {errorsElement}
                 {graphElement}
             </div>
         );
