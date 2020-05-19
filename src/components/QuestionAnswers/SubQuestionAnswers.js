@@ -7,7 +7,7 @@ class SubQuestionAnswers extends Component {
         this.state = {
             qaId: this.props.subId,
             question: "",
-            options: [{
+            option: [{
                 optionId: "",
                 optionName: ""
             }]
@@ -15,24 +15,24 @@ class SubQuestionAnswers extends Component {
     }
 
     handleText = i => e => {
-        let options = [...this.state.options]
-        options[i] = {
+        let option = [...this.state.option]
+        option[i] = {
             optionId: (e.target.value) ? "sub_option_" + i : "",
             optionName: e.target.value
         }
         this.setState({
-            options
+            option
         })
     }
 
     handleDelete = i => e => {
         e.preventDefault()
-        let options = [
-            ...this.state.options.slice(0, i),
-            ...this.state.options.slice(i + 1)
+        let option = [
+            ...this.state.option.slice(0, i),
+            ...this.state.option.slice(i + 1)
         ]
         this.setState({
-            options
+            option
         })
     }
 
@@ -44,13 +44,13 @@ class SubQuestionAnswers extends Component {
             return false;
         }
 
-        let options = this.state.options.concat([{
+        let option = this.state.option.concat([{
             optionId: "",
             optionName: ""
         }]);
 
         this.setState({
-            options
+            option
         })
     }
 
@@ -83,14 +83,14 @@ class SubQuestionAnswers extends Component {
                         <Button className="add__button" variant="secondary" onClick={this.addOptions}><i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>Add option</Button>
                     </div>
                     <Fragment>
-                        {Object.keys(this.state.options).map((option, index) => (
+                        {Object.keys(this.state.option).map((option, index) => (
                             <span key={index}>
                                 <Form.Label>Option #{index + 1}</Form.Label>
                                 <div className="d-flex">
                                     <Form.Control
                                         type="text"
                                         name="option"
-                                        id={this.state.options[index].optionId}
+                                        id={this.state.option[index].optionId}
                                         placeholder="Enter option"
                                         onChange={this.handleText(index)}
                                         value={option.optionName}

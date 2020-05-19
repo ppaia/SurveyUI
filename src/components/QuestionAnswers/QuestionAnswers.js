@@ -7,7 +7,7 @@ import "./QA_Styles.css";
 class QuestionAnswers extends Component {
   state = {
     question: "",
-    options: [{
+    option: [{
       optionId: "",
       optionName: ""
     }],
@@ -26,24 +26,24 @@ class QuestionAnswers extends Component {
   }
 
   handleText = i => e => {
-    let options = [...this.state.options]
-    options[i] = {
+    let option = [...this.state.option]
+    option[i] = {
       optionId: (e.target.value) ? "option_" + i : "",
       optionName: e.target.value
     }
     this.setState({
-      options
+      option
     })
   }
 
   handleDelete = i => e => {
     e.preventDefault()
-    let options = [
-      ...this.state.options.slice(0, i),
-      ...this.state.options.slice(i + 1)
+    let option = [
+      ...this.state.option.slice(0, i),
+      ...this.state.option.slice(i + 1)
     ]
     this.setState({
-      options
+      option
     })
   }
 
@@ -55,12 +55,12 @@ class QuestionAnswers extends Component {
       return false;
     }
 
-    let options = this.state.options.concat([{
+    let option = this.state.option.concat([{
       optionId: "",
       optionName: ""
     }])
     this.setState({
-      options
+      option
     })
   }
 
@@ -81,27 +81,27 @@ class QuestionAnswers extends Component {
     });
 
     console.log("Question: ", this.state.question);
-    console.log("Options: ", this.state.options);
+    console.log("Options: ", this.state.option);
   }
 
   mergeSubQas = (qaData, e) => {
     e.preventDefault();
-    let options = this.state.options;
+    let option = this.state.option;
     let subQasAdded = this.state.subQasAdded;
 
-    options.map((item, index) => {
+    option.map((item, index) => {
       if (qaData.qaId === item.optionId) {
         let sub_options = [];
-        qaData.options.map((option, idx) => {
+        qaData.option.map((option, idx) => {
           if (option.optionName)
             sub_options.push(option.optionName);
         });
         if (qaData.question && sub_options.length) {
-          options[index].options = sub_options;
-          options[index].question = qaData.question;
+          option[index].option = sub_options;
+          option[index].question = qaData.question;
           subQasAdded.push(qaData.qaId);
         } else {
-          alert("Sub question and options must not be blank!");
+          alert("Sub question and option must not be blank!");
           return false;
         }
       }
@@ -109,7 +109,7 @@ class QuestionAnswers extends Component {
 
     this.setState({
       showPopup: false,
-      options,
+      option,
       subQasAdded
     });
 
@@ -129,15 +129,44 @@ class QuestionAnswers extends Component {
       return false;
     }
 
-    if (!this.state.options[0].optionName) {
+    if (!this.state.option[0].optionName) {
       alert("At-least one option must be there!");
       return false;
     }
 
-    let messages = ["Successfully Submitted!"];
-    this.setState({
-      messages
-    });
+    let postObject = {
+      "expName": "Exp1",
+      "surveyQuiz": [
+        {
+          "question": this.state.question,
+          "option": this.state.option
+        }
+      ]
+    };
+
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(postObject)
+    };
+    fetch(process.env.REACT_APP_URL + `rest/chatbot/survey/addQuizes`, requestOptions)
+      // We get the API response and receive data in JSON format...
+      .then((response) => response.json())
+      // ...then we update the users state
+      .then((data) => {
+        if (data) {
+          let messages = ["Successfully Submitted!"];
+          this.setState({
+            messages
+          });
+        }
+      })
+      // Catch any errors we hit and update the app
+      .catch((errors) => {
+        this.setState({ errors, isLoading: false })
+      });
+
   }
 
   render() {
@@ -173,19 +202,19 @@ class QuestionAnswers extends Component {
               <Button className="add__button" variant="secondary" onClick={this.addOptions}><i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>Add option</Button>
             </div>
             <Fragment>
-              {Object.keys(this.state.options).map((option, index) => (
+              {Object.keys(this.state.option).map((option, index) => (
                 <span key={index}>
                   <Form.Label>Option #{index + 1}</Form.Label>
                   <div className="d-flex">
                     <Form.Control
                       type="text"
                       name="option"
-                      id={this.state.options[index].optionId}
+                      id={this.state.option[index].optionId}
                       placeholder="Enter option"
                       onChange={this.handleText(index)}
                       value={option.optionName}
                     />
-                    {(this.state.subQasAdded.includes(this.state.options[index].optionId)) ? (
+                    {(this.state.subQasAdded.includes(this.state.option[index].optionId)) ? (
                       <Button className="add__button" variant="secondary" disabled>
                         <i className="fa fa-check-circle mr-2" aria-hidden="true"></i>
                         <span>Added</span>
@@ -193,7 +222,7 @@ class QuestionAnswers extends Component {
                     ) : (
                         <Fragment>
                           <Button className="add__button" variant="danger" onClick={this.handleDelete(index)}>X</Button>
-                          <Button className="add__button" variant="primary" onClick={() => this.addSubQuestion(this.state.options[index].optionId, this.state.options[index].optionName)}>
+                          <Button className="add__button" variant="primary" onClick={() => this.addSubQuestion(this.state.option[index].optionId, this.state.option[index].optionName)}>
                             <i className="fa fa-plus-circle mr-2" aria-hidden="true"></i>
                             <span>Sub-Question</span>
                           </Button>

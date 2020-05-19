@@ -46,7 +46,6 @@ class RootComponent extends Component {
   render() {
     let errors = "";
     if (this.state.errors.length) {
-      debugger;
       errors = this.state.errors.map((item, index) => (
         <div key={index} className="alert alert-error">
           {item}
